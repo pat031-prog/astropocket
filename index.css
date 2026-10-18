@@ -1,0 +1,2484 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=VT323&display=swap");
+
+:root {
+  font-family: "Roboto Mono", monospace;
+  color: #d8cce4;
+  background: #07050c;
+  font-synthesis: none;
+  --void: #07050c;
+  --panel: #0b0812;
+  --line: #30213f;
+  --faint: #1b1426;
+  --muted: #a18cad;
+  --purple: #e0aaff;
+  --cyan: #70c6ec;
+  --amber: #edbe75;
+  --green: #a4d7b6;
+  --pink: #ee9bb9;
+  color-scheme: dark;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+button,
+a {
+  touch-action: manipulation;
+}
+button {
+  color: inherit;
+  cursor: pointer;
+}
+button {
+  background: none;
+  border: 0;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+button:hover:not(:disabled) {
+  color: var(--purple);
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+input,
+select,
+textarea {
+  color: #eee0f9;
+  background: #110b1b;
+  border: 1px solid #463052;
+  border-radius: 0;
+}
+select {
+  cursor: pointer;
+}
+input,
+select {
+  min-height: 40px;
+  padding: 7px 8px;
+}
+textarea {
+  resize: none;
+}
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+button {
+  border-radius: 0;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 20px;
+  z-index: 50;
+  padding: 12px;
+  background: #1b1227;
+}
+.skip-link:focus {
+  top: 10px;
+}
+::selection {
+  background: #79459d;
+  color: white;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #4e345f;
+}
+::-webkit-scrollbar-track {
+  background: #0b0812;
+}
+.astropocket {
+  height: 100dvh;
+  min-height: 600px;
+  padding: 0 22px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 15% 0%, #20102d44, transparent 40%),
+    radial-gradient(ellipse at 90% 90%, #0e223233, transparent 40%), #07050c;
+}
+.astropocket:before {
+  content: "";
+  pointer-events: none;
+  z-index: 10;
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0 3px,
+    #bfa0ff04 3px 4px
+  );
+}
+.console-masthead {
+  height: 85px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 17px;
+}
+.brand-mark {
+  color: var(--purple);
+  font-size: 38px;
+  line-height: 1;
+  text-shadow: 0 0 18px #dbaaff44;
+}
+.brand strong {
+  font:
+    36px/0.9 "VT323",
+    monospace;
+  letter-spacing: 1.5px;
+  color: var(--purple);
+  white-space: nowrap;
+}
+.brand strong span {
+  color: #eee3f7;
+}
+.brand sup {
+  font: 10px "Roboto Mono";
+  vertical-align: top;
+  margin-left: 4px;
+}
+.brand small {
+  display: block;
+  letter-spacing: 1.5px;
+  font-size: 8px;
+  color: var(--muted);
+  margin-top: 7px;
+}
+.masthead-frequency {
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  margin-left: auto;
+  color: #796385;
+  white-space: nowrap;
+}
+.signal-bars {
+  font-size: 16px;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  margin-right: 10px;
+}
+.masthead-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.masthead-controls time {
+  color: var(--purple);
+  font: 29px "VT323";
+  border-left: 1px solid var(--line);
+  padding-left: 22px;
+  white-space: nowrap;
+}
+.masthead-controls time small {
+  font: 9px "Roboto Mono";
+  color: var(--muted);
+  margin-left: 6px;
+}
+.sound-toggle {
+  font-size: 9px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  min-height: 44px;
+}
+.sound-toggle input {
+  width: 12px;
+  height: 12px;
+  min-height: 0;
+  padding: 0;
+  accent-color: var(--purple);
+}
+.connection-button {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  white-space: nowrap;
+}
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--amber);
+  box-shadow: 0 0 7px #edbe7544;
+}
+.status-dot.ready {
+  background: var(--green);
+  box-shadow: 0 0 7px #a4d7b644;
+}
+.console-grid {
+  display: grid;
+  grid-template-columns: 260px minmax(340px, 1fr) 340px;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+}
+.console-panel {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, #100b19, #0b0812 35%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow:
+    inset 0 0 0 3px #09060e,
+    0 3px 20px #0004;
+}
+.console-panel:before,
+.console-panel:after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-color: var(--purple);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
+.console-panel:before {
+  left: -1px;
+  top: -1px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.console-panel:after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+}
+.module-heading {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+  padding: 0 14px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--purple);
+  flex-shrink: 0;
+  background: #140d1d88;
+}
+.module-heading > span:last-child {
+  color: var(--muted);
+  font-size: 8px;
+}
+.module-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px;
+  font-size: 7px;
+  letter-spacing: 0.7px;
+  color: #856b94;
+  border-top: 1px solid var(--line);
+  flex-shrink: 0;
+  margin-top: auto;
+}
+.console-bottom {
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-shrink: 0;
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: #80658f;
+}
+.console-bottom a {
+  color: #a58ab4;
+}
+.mobile-navigation {
+  display: none;
+}
+.pilot-identity {
+  padding: 21px 18px 0;
+}
+.pilot-code {
+  font-size: 7px;
+  letter-spacing: 1.8px;
+  color: var(--muted);
+}
+.pilot-identity h2 {
+  font: 31px/1.2 "VT323";
+  color: #eee0f5;
+  margin: 7px 0 1px;
+}
+.pilot-identity > button {
+  color: var(--muted);
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0;
+  letter-spacing: 0.7px;
+}
+.pilot-identity > button span {
+  color: var(--purple);
+}
+.natal-wheel {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 280px;
+}
+.astro-wheel {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.natal-triad {
+  display: flex;
+  margin: 3px 15px 17px;
+  justify-content: space-around;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+  gap: 5px;
+}
+.natal-triad button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  padding: 0 2px;
+}
+.natal-triad button + button {
+  border-left: 1px solid var(--line);
+}
+.natal-triad button > span {
+  font-size: 21px;
+  color: var(--purple);
+  font-family: serif;
+}
+.natal-triad small {
+  font-size: 7px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.natal-triad strong {
+  font-size: 10px;
+  font-weight: 400;
+  color: #e2d1ec;
+}
+.list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--faint);
+  flex-shrink: 0;
+}
+.list-heading b {
+  color: var(--cyan);
+  font-weight: 400;
+  margin-left: 5px;
+}
+.list-heading label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.list-heading input {
+  min-height: 0;
+  width: 11px;
+  height: 11px;
+  accent-color: var(--purple);
+}
+.instrument-scroll {
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.natal-positions {
+  flex: 1;
+  min-height: 70px;
+}
+.astro-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 10px 14px;
+  min-height: 45px;
+  text-align: left;
+  border-bottom: 1px solid var(--faint);
+  transition: background 0.15s;
+}
+.astro-row:hover {
+  background: #24153399;
+}
+.astro-row > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.astro-row strong {
+  font-size: 10px;
+  font-weight: 400;
+  color: #decee7;
+}
+.astro-row small {
+  font-size: 8px;
+  color: var(--muted);
+}
+.planet-code {
+  font-size: 19px;
+  width: 23px;
+  flex-shrink: 0;
+  color: var(--purple);
+  font-family: serif;
+}
+.numeric {
+  margin-left: auto;
+  color: var(--cyan);
+  font-size: 9px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.soul-note {
+  padding: 14px;
+  border-top: 1px solid var(--line);
+}
+.soul-note > span {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: #b191c3;
+}
+.soul-note p {
+  font-size: 8px;
+  line-height: 1.9;
+  color: var(--muted);
+  margin: 7px 0;
+}
+.soul-note a {
+  font-size: 8px;
+  letter-spacing: 0.4px;
+}
+.channel-panel {
+  background:
+    radial-gradient(ellipse at 80% 12%, #28143155, transparent 50%), #0b0812;
+}
+.channel-heading > div {
+  display: flex;
+  gap: 15px;
+}
+.channel-heading button {
+  font-size: 8px;
+  padding: 12px 0;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.channel-context {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--faint);
+  flex-shrink: 0;
+}
+.context-date {
+  font-size: 10px;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+.context-date small {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-left: 8px;
+}
+.channel-context > label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 7px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.channel-context select {
+  font-size: 10px;
+  min-height: 28px;
+  padding: 4px 20px 4px 7px;
+  border: 1px solid var(--line);
+  color: var(--purple);
+  max-width: 140px;
+}
+.lens-note {
+  font-size: 8px;
+  line-height: 1.7;
+  color: var(--amber);
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--faint);
+}
+.transmission-log {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 24px;
+  scrollbar-gutter: stable;
+}
+.terminal-welcome {
+  position: relative;
+  padding: 39px 3px 24px;
+  max-width: 650px;
+  margin: auto;
+  isolation: isolate;
+}
+.welcome-kanji {
+  position: absolute;
+  z-index: -1;
+  right: -3px;
+  top: 28px;
+  writing-mode: vertical-rl;
+  font: 100px/1 serif;
+  letter-spacing: 5px;
+  color: #9f64c407;
+  user-select: none;
+}
+.boot-lines {
+  font-size: 8px;
+  color: #9b7eac;
+  letter-spacing: 0.8px;
+  line-height: 2.4;
+  margin-bottom: 28px;
+}
+.boot-lines p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.boot-lines p > span:first-child {
+  color: #6a4d7c;
+  font-size: 7px;
+}
+.boot-lines b {
+  font-weight: 400;
+  color: var(--cyan);
+  font-size: 7px;
+}
+.cursor-block {
+  display: inline-block;
+  width: 5px;
+  height: 9px;
+  background: var(--purple);
+  margin-left: -5px;
+  animation: blink-cursor 1.2s steps(1) infinite;
+}
+.terminal-welcome h1 {
+  font: clamp(35px, 3.8vw, 58px) / 0.98 "VT323";
+  color: #eadbf2;
+  letter-spacing: 0.2px;
+  text-shadow: 0 0 20px #c890ff11;
+  margin-bottom: 18px;
+}
+.welcome-caption {
+  font-size: 11px;
+  line-height: 1.9;
+  color: #b79bc6;
+  max-width: 420px;
+}
+.starter-commands {
+  margin-top: 27px;
+  border-top: 1px solid var(--line);
+}
+.starter-commands button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  min-height: 44px;
+  text-align: left;
+  border-bottom: 1px solid var(--faint);
+  font-size: 10px;
+  color: #d6b9e4;
+}
+.starter-commands button > span {
+  font-size: 8px;
+  color: #735584;
+}
+.starter-commands button > b {
+  margin-left: auto;
+  color: var(--purple);
+  font-weight: 400;
+}
+.transmission {
+  padding: 23px 0;
+  border-bottom: 1px solid var(--line);
+}
+.transmission header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--purple);
+  margin-bottom: 15px;
+}
+.transmission header time {
+  font-size: 8px;
+  color: #876a98;
+  letter-spacing: 0;
+}
+.transmission.user header {
+  color: var(--cyan);
+}
+.transmission.user .message-markdown {
+  color: #b7cddd;
+}
+.message-markdown {
+  font-size: 13px;
+  line-height: 1.9;
+  color: #d9cbe3;
+  overflow-wrap: anywhere;
+}
+.message-markdown p + p,
+.message-markdown p + ul,
+.message-markdown p + ol {
+  margin-top: 15px;
+}
+.message-markdown strong {
+  color: #efcfff;
+  font-weight: 600;
+}
+.message-markdown li {
+  margin-bottom: 8px;
+}
+.message-markdown ul,
+.message-markdown ol {
+  padding-left: 22px;
+}
+.message-markdown h1,
+.message-markdown h2,
+.message-markdown h3 {
+  font-size: 15px;
+  margin: 20px 0 10px;
+  color: var(--purple);
+  line-height: 1.5;
+}
+.message-markdown pre {
+  overflow: auto;
+  background: #1b1027;
+  padding: 12px;
+}
+.message-markdown code {
+  font-size: 12px;
+  color: var(--cyan);
+}
+.message-markdown blockquote {
+  margin: 16px 0;
+  padding-left: 15px;
+  border-left: 2px solid #80539c;
+  color: #bca3c9;
+}
+.transmission footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 6px;
+  letter-spacing: 0.5px;
+  color: #9575a7;
+  margin-top: 18px;
+}
+.transmission.failed .message-markdown {
+  color: var(--amber);
+}
+.computation-line {
+  display: flex;
+  gap: 12px;
+  font-size: 8px;
+  line-height: 1.8;
+  color: var(--cyan);
+  padding: 22px 0;
+}
+.activity-dots {
+  animation: pulse 1s ease infinite;
+  white-space: nowrap;
+}
+.terminal-composer {
+  display: grid;
+  grid-template-columns: 1fr 82px;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding: 14px 17px 11px;
+  flex-shrink: 0;
+  background: #0e0916;
+}
+.composer-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid #463153;
+  background: #08060e;
+  padding: 12px;
+}
+.composer-field:focus-within {
+  border-color: #aa74c9;
+  box-shadow: 0 0 12px #e0aaff0c;
+}
+.prompt-marker {
+  color: var(--purple);
+  font-size: 12px;
+  padding-top: 1px;
+}
+.composer-field textarea {
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  line-height: 1.7;
+  background: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  min-height: 38px;
+  max-height: 90px;
+  color: #eee1f7;
+}
+.composer-field textarea:focus-visible {
+  outline: none;
+}
+.composer-field textarea::placeholder {
+  color: #8f729f;
+}
+.transmit-button {
+  border: 1px solid #65437b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: var(--purple);
+  background: #241330;
+}
+.transmit-button > span {
+  font-size: 18px;
+}
+.transmit-button:hover:not(:disabled) {
+  background: #3b2050;
+}
+.transmit-button.stop {
+  border-color: #77533f;
+  color: var(--amber);
+  background: #241a14;
+}
+.composer-foot {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: #80628f;
+  font-size: 6px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+}
+.retry-button {
+  width: 100%;
+  min-height: 38px;
+  font-size: 9px;
+  color: var(--amber);
+  border-top: 1px solid var(--line);
+}
+.chronometer {
+  padding: 15px 12px 12px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.chronometer > label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 7px;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.chronometer > label > span {
+  font-size: 7px;
+  color: var(--cyan);
+}
+.chronometer > form {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.chronometer input {
+  font-size: 10px;
+  min-width: 0;
+  width: 100%;
+  flex: 1;
+  min-height: 32px;
+  padding: 6px;
+}
+.chronometer button {
+  min-width: 23px;
+  min-height: 34px;
+  font-size: 20px;
+  color: var(--muted);
+  padding: 0;
+}
+.chronometer .now-button {
+  font-size: 7px;
+  color: var(--cyan);
+  margin-left: 5px;
+  padding: 0 2px;
+  letter-spacing: 0.5px;
+}
+.instrument-tabs {
+  display: flex;
+  padding: 0 12px;
+  gap: 19px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.instrument-tabs button {
+  min-height: 39px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #93739e;
+  border-bottom: 2px solid transparent;
+  padding: 0;
+}
+.instrument-tabs button.selected {
+  color: var(--purple);
+  border-color: var(--purple);
+}
+.live-signal {
+  color: var(--cyan) !important;
+}
+.future-signal {
+  color: var(--amber) !important;
+}
+.sky-wheel {
+  padding: 8px 34px 6px;
+  flex-shrink: 0;
+  max-width: 335px;
+  width: 100%;
+  margin: auto;
+}
+.instrument-legend {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-size: 7px;
+  letter-spacing: 0.6px;
+  color: var(--cyan);
+  padding: 0 0 12px;
+}
+.instrument-legend > span + span {
+  color: var(--purple);
+}
+.aspect-list {
+  flex: 1;
+  min-height: 70px;
+}
+.aspect-list .astro-row {
+  padding: 12px;
+}
+.aspect-code {
+  font-size: 19px;
+  width: 23px;
+  flex-shrink: 0;
+}
+.aspect-code.hard {
+  color: var(--pink);
+}
+.aspect-code.soft {
+  color: var(--cyan);
+}
+.aspect-code.neutral {
+  color: var(--purple);
+}
+.retro-tag {
+  font-size: 9px;
+  color: var(--amber);
+  border: 1px solid #604a32;
+  padding: 3px 5px;
+  margin-left: auto;
+}
+.direct-tag {
+  font-size: 9px;
+  color: #8d779b;
+  margin-left: auto;
+  padding: 3px 5px;
+}
+.position-list {
+  flex: 1;
+}
+.position-list .astro-row {
+  padding: 14px;
+}
+.window-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+.window-controls {
+  padding: 17px 13px;
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 12px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.window-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  min-width: 0;
+}
+.window-controls select {
+  font-size: 9px;
+  width: 100%;
+  min-height: 35px;
+  padding: 6px;
+}
+.scan-button {
+  grid-column: 1/-1;
+  border: 1px solid #4d3c62;
+  color: var(--purple);
+  padding: 11px;
+  font-size: 8px;
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.7px;
+  background: #20142b;
+}
+.scan-button:hover:not(:disabled) {
+  background: #30203f;
+}
+.event-list {
+  flex: 1;
+}
+.event-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  padding: 15px 13px;
+  border-bottom: 1px solid var(--faint);
+}
+.event-row:hover {
+  background: #251832;
+}
+.event-row time {
+  width: 63px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.event-row time b {
+  font-weight: 400;
+  color: var(--cyan);
+  font-size: 10px;
+}
+.event-row time small {
+  font-size: 7px;
+  color: #8a7298;
+}
+.event-row > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.event-row strong {
+  font-size: 10px;
+  font-weight: 400;
+  color: #d5c0e1;
+}
+.event-row small {
+  font-size: 8px;
+  color: var(--muted);
+}
+.event-row > span:last-child {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--purple);
+}
+.instrument-note {
+  font-size: 8px;
+  color: var(--muted);
+  line-height: 1.8;
+  padding: 12px 14px;
+}
+.instrument-empty {
+  padding: 18px 14px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+.window-empty {
+  padding: 45px 25px;
+  flex: 1;
+  color: var(--muted);
+}
+.window-empty > span {
+  font: 45px "VT323";
+  color: var(--purple);
+}
+.window-empty h3 {
+  font: 25px "VT323";
+  color: #d5bee2;
+  margin: 15px 0 10px;
+}
+.window-empty p {
+  font-size: 10px;
+  line-height: 1.9;
+}
+.inline-error {
+  font-size: 10px;
+  line-height: 1.7;
+  color: var(--amber);
+  padding: 12px;
+}
+.console-dialog {
+  border: 1px solid #805595;
+  background: #100b18;
+  color: #dfcde9;
+  padding: 0;
+  max-width: 560px;
+  width: calc(100% - 30px);
+  max-height: 90dvh;
+  box-shadow: 0 15px 100px #000b;
+}
+.console-dialog::backdrop {
+  background: #05020bd9;
+  backdrop-filter: blur(4px);
+}
+.console-dialog .module-heading {
+  padding: 0 20px;
+  min-height: 50px;
+}
+.console-dialog .module-heading button {
+  font-size: 25px;
+  min-width: 30px;
+  min-height: 40px;
+  color: var(--purple);
+}
+.dialog-content {
+  padding: 22px;
+}
+.dialog-content > p {
+  font-size: 11px;
+  line-height: 1.9;
+  color: #b9a1c6;
+  margin-bottom: 20px;
+}
+.dialog-content > label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.dialog-content .instrument-note {
+  padding: 0;
+  font-size: 9px;
+  line-height: 1.8;
+}
+.coordinate-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.coordinate-editor label {
+  display: grid;
+  grid-template-columns: 90px 1fr 80px 10px;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+}
+.coordinate-editor input,
+.coordinate-editor select {
+  width: 100%;
+  font-size: 11px;
+}
+.primary-button {
+  background: #382047;
+  border: 1px solid #8c5ba6;
+  color: var(--purple);
+  width: 100%;
+  padding: 13px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.primary-button:hover:not(:disabled) {
+  background: #4f2b63;
+}
+.connection-state {
+  font-size: 10px;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.console-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  background: #251631;
+  border: 1px solid #87599c;
+  color: #e4c5f6;
+  font-size: 11px;
+  line-height: 1.7;
+  z-index: 30;
+  max-width: calc(100vw - 30px);
+  width: max-content;
+  box-shadow: 0 5px 30px #0009;
+}
+/* Nova retains the original screen, white eyes, antennas and three lights. */
+.nova-bay {
+  height: 116px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 8px 24px;
+  border-top: 1px solid var(--line);
+  position: relative;
+  background: linear-gradient(90deg, #1f112988, #120b1d44);
+  overflow: visible;
+}
+.nova-station {
+  position: relative;
+  width: 96px;
+  height: 98px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.station-ring {
+  position: absolute;
+  width: 93px;
+  height: 18px;
+  border: 1px solid #713b8c55;
+  border-radius: 50%;
+  bottom: 1px;
+  background: #a162c40b;
+  box-shadow: 0 0 20px #b586ff0b;
+}
+.nova-robot {
+  position: relative;
+  width: 82px;
+  height: 84px;
+  padding: 0;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+  z-index: 4;
+  transition: transform 0.35s cubic-bezier(0.18, 0.8, 0.35, 1.2);
+  filter: drop-shadow(0 0 9px #c89bff16);
+  outline-offset: 8px;
+}
+.nova-robot:active {
+  cursor: grabbing;
+}
+.nova-shell {
+  display: block;
+  position: absolute;
+  inset: 10px 0 5px;
+  background: linear-gradient(145deg, #241c30, #0e0a16 55%);
+  border: 1px solid #8e66a8;
+  border-radius: 15px 15px 12px 12px;
+  box-shadow:
+    inset 2px 2px 0 #cbaaff15,
+    inset -3px -3px 0 #000a,
+    0 3px 0 #030107;
+  animation: nova-float 5s ease-in-out infinite;
+}
+.nova-screen {
+  position: absolute;
+  inset: 7px 6px 18px;
+  background: #020306;
+  border: 1px solid #452e58;
+  border-radius: 10px;
+  box-shadow: inset 0 0 12px #35214455;
+  overflow: hidden;
+}
+.nova-screen:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(145deg, #e4c4ff0b, transparent 40%),
+    repeating-linear-gradient(0deg, transparent 0 2px, #96cdff06 2px 3px);
+  pointer-events: none;
+  border-radius: inherit;
+}
+.nova-eyes {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  transform: translate(var(--gaze-x, 0), var(--gaze-y, 0));
+  transition: transform 0.16s;
+}
+.nova-eyes i {
+  width: 10px;
+  height: 17px;
+  border-radius: 4px;
+  background: #f0f4ff;
+  box-shadow: 0 0 6px #bddefc77;
+  animation: nova-blink 7s infinite;
+  transform-origin: center;
+}
+.nova-mouth {
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  bottom: 7px;
+  left: calc(50% - 4px);
+  background: #8c82a4;
+  border-radius: 4px;
+}
+.nova-leds {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+}
+.nova-leds i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #7fbdda;
+  box-shadow: 0 0 4px #70c6ec44;
+}
+.nova-leds i:nth-child(2) {
+  background: var(--purple);
+}
+.nova-leds i:nth-child(3) {
+  background: #ecd0ec;
+}
+.nova-antenna {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 18px;
+  background: #89639d;
+  transform-origin: bottom;
+  z-index: -1;
+  animation: nova-antenna 5s ease-in-out infinite;
+}
+.nova-antenna:before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -2px;
+  width: 6px;
+  height: 6px;
+  background: #d8b4f2;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #c89bff66;
+}
+.nova-antenna.left {
+  left: 15px;
+  rotate: -19deg;
+}
+.nova-antenna.right {
+  right: 15px;
+  rotate: 19deg;
+  animation-delay: 0.3s;
+}
+.nova-feet {
+  position: absolute;
+  bottom: 0;
+  left: 13px;
+  right: 13px;
+  display: flex;
+  justify-content: space-between;
+  z-index: -1;
+}
+.nova-feet i {
+  width: 14px;
+  height: 10px;
+  background: #22152e;
+  border: 1px solid #745186;
+  border-radius: 0 0 4px 4px;
+}
+.nova-dialogue {
+  min-width: 0;
+  position: relative;
+  padding-left: 15px;
+  border-left: 1px solid #5c3c70;
+}
+.nova-dialogue:before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 1px;
+  width: 5px;
+  height: 5px;
+  background: var(--purple);
+}
+.nova-id {
+  font: 20px/0.9 "VT323";
+  letter-spacing: 1px;
+  color: var(--purple);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.nova-id small {
+  font: 6px "Roboto Mono";
+  color: #a184af;
+  letter-spacing: 1px;
+}
+.nova-dialogue p {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #cfb6df;
+  margin: 8px 0;
+}
+.nova-hint {
+  font-size: 7px;
+  color: #80628f;
+}
+.nova-hint button {
+  font-size: 8px;
+  color: var(--cyan);
+  padding: 0;
+  min-height: 18px;
+}
+.nova-scan {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent,
+    transparent 45%,
+    #70c6ec55 50%,
+    transparent 55%
+  );
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.mood-listening .nova-antenna {
+  animation: nova-listen 1.2s ease-in-out infinite;
+}
+.mood-listening .nova-eyes i {
+  height: 20px;
+  width: 11px;
+}
+.mood-scanning .nova-eyes i {
+  height: 8px;
+  animation: nova-search 1.4s ease-in-out infinite;
+}
+.mood-scanning .nova-scan {
+  opacity: 1;
+  animation: nova-scan 1.8s linear infinite;
+}
+.mood-scanning .nova-leds i {
+  animation: pulse 0.5s infinite alternate;
+}
+.mood-scanning .nova-leds i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.mood-scanning .nova-leds i:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.mood-speaking .nova-mouth {
+  animation: nova-talk 0.35s steps(2) infinite;
+}
+.mood-speaking .nova-antenna:before {
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+}
+.mood-happy .nova-eyes i,
+.mood-success .nova-eyes i {
+  height: 10px;
+  background: transparent;
+  border-top: 3px solid #eff4ff;
+  border-radius: 50% 50% 0 0;
+  box-shadow: none;
+  animation: none;
+  transform: translateY(2px);
+}
+.mood-happy .nova-shell,
+.mood-success .nova-shell {
+  animation: nova-hop 0.6s ease-in-out 2;
+}
+.mood-warning .nova-eyes i:first-child {
+  height: 9px;
+  rotate: -16deg;
+}
+.mood-warning .nova-leds i {
+  background: var(--amber);
+}
+.mood-sleeping .nova-eyes i {
+  height: 2px;
+  opacity: 0.5;
+  animation: none;
+}
+.mood-sleeping .nova-shell {
+  animation: nova-breathe 4s ease-in-out infinite;
+}
+.mood-sleeping .nova-antenna:before {
+  opacity: 0.4;
+  box-shadow: none;
+}
+.mood-dragging .nova-robot {
+  transition: none;
+}
+.mood-dragging .nova-shell {
+  animation: none;
+}
+.mood-dragging .nova-eyes i {
+  height: 20px;
+  width: 12px;
+  animation: none;
+}
+.mood-recovering .nova-shell {
+  animation: nova-recover 0.6s ease both;
+}
+@keyframes nova-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes nova-antenna {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+@keyframes nova-blink {
+  0%,
+  42%,
+  44%,
+  100% {
+    scale: 1 1;
+  }
+  43% {
+    scale: 1 0.12;
+  }
+}
+@keyframes nova-listen {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+@keyframes nova-search {
+  0%,
+  100% {
+    translate: -3px 0;
+  }
+  50% {
+    translate: 3px 0;
+  }
+}
+@keyframes nova-scan {
+  to {
+    transform: translateY(100%);
+  }
+}
+@keyframes nova-talk {
+  50% {
+    height: 5px;
+    bottom: 5px;
+  }
+}
+@keyframes nova-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-7px) rotate(-3deg);
+  }
+  70% {
+    transform: translateY(1px) scale(1.04, 0.96);
+  }
+}
+@keyframes nova-breathe {
+  50% {
+    transform: translateY(2px) scale(1.015, 0.98);
+  }
+}
+@keyframes nova-recover {
+  0% {
+    transform: rotate(-10deg);
+  }
+  40% {
+    transform: rotate(7deg);
+  }
+  70% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes blink-cursor {
+  50% {
+    opacity: 0;
+  }
+}
+@media (min-width: 1550px) {
+  .astropocket {
+    padding: 0 32px;
+  }
+  .console-grid {
+    grid-template-columns: 290px minmax(400px, 1fr) 370px;
+    gap: 20px;
+  }
+  .transmission-log {
+    padding: 0 36px;
+  }
+  .terminal-welcome {
+    padding-top: 60px;
+  }
+  .natal-wheel {
+    max-width: 300px;
+  }
+  .sky-wheel {
+    max-width: 350px;
+  }
+  .message-markdown {
+    font-size: 14px;
+  }
+  .nova-bay {
+    padding-left: 34px;
+    height: 128px;
+  }
+  .nova-dialogue p {
+    font-size: 11px;
+  }
+}
+@media (max-width: 1199px) {
+  .astropocket {
+    padding: 0 12px;
+  }
+  .console-grid {
+    grid-template-columns: 220px minmax(310px, 1fr) 300px;
+    gap: 10px;
+  }
+  .masthead-frequency {
+    display: none;
+  }
+  .console-masthead {
+    height: 73px;
+    margin-bottom: 12px;
+  }
+  .masthead-controls {
+    gap: 16px;
+  }
+  .pilot-identity {
+    padding: 16px 14px 0;
+  }
+  .natal-wheel {
+    padding: 0 8px;
+  }
+  .natal-triad {
+    margin: 4px 10px 12px;
+  }
+  .soul-note {
+    padding: 10px;
+  }
+  .sky-wheel {
+    padding: 9px 29px 6px;
+  }
+  .transmission-log {
+    padding: 0 19px;
+  }
+  .terminal-welcome {
+    padding-top: 30px;
+  }
+  .terminal-welcome h1 {
+    font-size: 41px;
+  }
+  .welcome-caption {
+    font-size: 10px;
+  }
+  .starter-commands button {
+    font-size: 9px;
+  }
+  .composer-foot > span:last-child {
+    display: none;
+  }
+  .nova-bay {
+    padding: 8px 13px;
+    gap: 8px;
+  }
+  .nova-dialogue {
+    padding-left: 11px;
+  }
+  .nova-dialogue p {
+    font-size: 9px;
+  }
+  .nova-id small {
+    font-size: 5px;
+  }
+  .chronometer {
+    padding: 14px 8px;
+  }
+  .chronometer input {
+    font-size: 9px;
+  }
+  .aspect-list .astro-row strong {
+    font-size: 9px;
+  }
+  .astro-row {
+    gap: 6px;
+  }
+  .natal-positions .numeric {
+    font-size: 8px;
+  }
+  .terminal-composer {
+    padding: 12px;
+    grid-template-columns: 1fr 68px;
+  }
+}
+@media (max-width: 950px) {
+  .astropocket {
+    min-height: 0;
+    padding: 0 15px;
+  }
+  .console-masthead {
+    height: 69px;
+    margin-bottom: 0;
+  }
+  .brand strong {
+    font-size: 31px;
+  }
+  .brand small {
+    font-size: 6px;
+    letter-spacing: 1px;
+  }
+  .brand-mark {
+    font-size: 30px;
+  }
+  .masthead-controls {
+    gap: 15px;
+  }
+  .masthead-controls time {
+    font-size: 25px;
+    padding-left: 15px;
+  }
+  .sound-toggle {
+    font-size: 8px;
+  }
+  .connection-button {
+    font-size: 8px;
+  }
+  .console-grid {
+    display: flex;
+    gap: 0;
+  }
+  .console-panel {
+    flex: 1;
+  }
+  .soul-panel,
+  .sky-panel {
+    display: none;
+  }
+  .view-natal .soul-panel {
+    display: flex;
+  }
+  .view-natal .channel-panel,
+  .view-sky .channel-panel {
+    display: none;
+  }
+  .view-sky .sky-panel {
+    display: flex;
+  }
+  .mobile-navigation {
+    display: flex;
+    gap: 0;
+    height: 48px;
+    flex-shrink: 0;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 10px;
+  }
+  .mobile-navigation button {
+    flex: 1;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .mobile-navigation button > span {
+    font-size: 9px;
+    color: #755486;
+    margin-right: 10px;
+  }
+  .mobile-navigation button.selected {
+    color: var(--purple);
+    border-color: var(--purple);
+  }
+  .mobile-navigation button.selected > span {
+    color: var(--purple);
+  }
+  .console-bottom {
+    font-size: 6px;
+    height: 28px;
+  }
+  .console-bottom > span:nth-child(2) {
+    display: none;
+  }
+  .natal-wheel {
+    max-width: 300px;
+  }
+  .pilot-identity {
+    padding: 20px 25px 0;
+  }
+  .pilot-identity h2 {
+    font-size: 35px;
+  }
+  .natal-triad {
+    margin: 3px 20px 10px;
+  }
+  .natal-positions .astro-row {
+    padding: 11px 25px;
+  }
+  .natal-triad strong {
+    font-size: 12px;
+  }
+  .soul-note {
+    padding: 14px 25px;
+  }
+  .soul-note p {
+    font-size: 9px;
+  }
+  .sky-wheel {
+    max-width: 330px;
+  }
+  .sky-panel .astro-row {
+    padding: 14px 20px;
+  }
+  .sky-panel .astro-row strong {
+    font-size: 12px;
+  }
+  .sky-panel .astro-row small {
+    font-size: 9px;
+  }
+  .chronometer input {
+    font-size: 12px;
+  }
+  .chronometer {
+    padding: 15px 18px;
+  }
+  .chronometer .now-button {
+    font-size: 9px;
+    margin-left: 10px;
+  }
+  .instrument-tabs {
+    padding: 0 20px;
+    gap: 25px;
+  }
+  .instrument-tabs button {
+    font-size: 9px;
+  }
+  .window-controls {
+    padding: 20px;
+    grid-template-columns: 120px 1fr;
+  }
+  .window-controls select {
+    font-size: 11px;
+  }
+  .scan-button {
+    font-size: 10px;
+    min-height: 42px;
+  }
+  .event-row {
+    padding: 17px 20px;
+  }
+  .event-row strong {
+    font-size: 12px;
+  }
+  .terminal-welcome {
+    max-width: 540px;
+    padding-top: 40px;
+  }
+  .terminal-welcome h1 {
+    font-size: 54px;
+  }
+  .welcome-caption {
+    font-size: 12px;
+  }
+  .starter-commands button {
+    font-size: 11px;
+    padding: 15px 0;
+  }
+  .transmission-log {
+    padding: 0 24px;
+  }
+  .message-markdown {
+    font-size: 13px;
+  }
+  .nova-bay {
+    padding: 9px 22px;
+    height: 115px;
+    gap: 16px;
+  }
+  .nova-dialogue p {
+    font-size: 11px;
+  }
+  .nova-id small {
+    font-size: 6px;
+  }
+  .terminal-composer {
+    padding: 14px 18px 11px;
+    grid-template-columns: 1fr 80px;
+  }
+  .composer-field textarea {
+    font-size: 12px;
+  }
+  .composer-foot {
+    font-size: 6px;
+  }
+}
+@media (max-width: 540px) {
+  .astropocket {
+    padding: 0 9px;
+  }
+  .console-masthead {
+    height: 63px;
+    gap: 8px;
+  }
+  .brand-mark {
+    font-size: 26px;
+  }
+  .brand strong {
+    font-size: 29px;
+    letter-spacing: 0.5px;
+  }
+  .brand small {
+    font-size: 5px;
+    letter-spacing: 0.65px;
+    margin-top: 5px;
+  }
+  .masthead-controls {
+    gap: 10px;
+  }
+  .masthead-controls time {
+    display: none;
+  }
+  .sound-toggle > span {
+    display: none;
+  }
+  .sound-toggle input {
+    width: 14px;
+    height: 14px;
+  }
+  .connection-button {
+    font-size: 7px;
+    gap: 6px;
+    letter-spacing: 0.2px;
+  }
+  .status-dot {
+    width: 5px;
+    height: 5px;
+  }
+  .mobile-navigation {
+    height: 44px;
+    margin-bottom: 8px;
+  }
+  .mobile-navigation button {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+  .module-heading {
+    min-height: 35px;
+    padding: 0 12px;
+    font-size: 8px;
+  }
+  .channel-heading button {
+    font-size: 7px;
+  }
+  .channel-context {
+    padding: 7px 13px;
+    min-height: 42px;
+    gap: 6px;
+  }
+  .context-date {
+    font-size: 9px;
+  }
+  .context-date small {
+    font-size: 6px;
+    margin-left: 6px;
+  }
+  .channel-context > label {
+    gap: 5px;
+    font-size: 6px;
+  }
+  .channel-context select {
+    font-size: 9px;
+    max-width: 108px;
+    padding-right: 12px;
+  }
+  .transmission-log {
+    padding: 0 17px;
+  }
+  .terminal-welcome {
+    padding: 28px 0 20px;
+  }
+  .boot-lines {
+    font-size: 7px;
+    letter-spacing: 0.4px;
+    line-height: 2.3;
+    margin-bottom: 23px;
+  }
+  .boot-lines p {
+    gap: 10px;
+  }
+  .terminal-welcome h1 {
+    font-size: 43px;
+    margin-bottom: 15px;
+  }
+  .welcome-caption {
+    font-size: 10px;
+    line-height: 1.9;
+  }
+  .starter-commands {
+    margin-top: 21px;
+  }
+  .starter-commands button {
+    font-size: 9px;
+    gap: 10px;
+    padding: 13px 0;
+  }
+  .starter-commands button > span {
+    font-size: 7px;
+  }
+  .welcome-kanji {
+    font-size: 90px;
+    right: -8px;
+  }
+  .nova-bay {
+    height: 101px;
+    padding: 7px 12px;
+    gap: 7px;
+  }
+  .nova-station {
+    width: 83px;
+    height: 84px;
+  }
+  .nova-robot {
+    scale: 0.87;
+  }
+  .station-ring {
+    width: 76px;
+    bottom: 0;
+  }
+  .nova-dialogue {
+    padding-left: 11px;
+  }
+  .nova-dialogue p {
+    font-size: 9px;
+    line-height: 1.7;
+    margin: 7px 0 5px;
+  }
+  .nova-id {
+    font-size: 19px;
+    gap: 7px;
+  }
+  .nova-id small {
+    font-size: 5px;
+    letter-spacing: 0.4px;
+  }
+  .nova-hint {
+    font-size: 6px;
+  }
+  .terminal-composer {
+    padding: 10px;
+    grid-template-columns: 1fr 57px;
+    gap: 8px;
+  }
+  .composer-field {
+    padding: 10px 9px;
+    gap: 7px;
+  }
+  .composer-field textarea {
+    font-size: 10px;
+    min-height: 34px;
+    line-height: 1.8;
+  }
+  .transmit-button {
+    font-size: 7px;
+    gap: 5px;
+  }
+  .transmit-button > span {
+    font-size: 15px;
+  }
+  .composer-foot {
+    font-size: 5px;
+    letter-spacing: 0.1px;
+  }
+  .console-bottom {
+    font-size: 5px;
+    letter-spacing: 0.5px;
+    height: 24px;
+  }
+  .transmission {
+    padding: 20px 0;
+  }
+  .transmission header {
+    font-size: 7px;
+  }
+  .message-markdown {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .transmission footer {
+    font-size: 6px;
+    gap: 9px;
+  }
+  .natal-wheel {
+    max-width: 260px;
+  }
+  .pilot-identity {
+    padding: 15px 20px 0;
+  }
+  .pilot-identity h2 {
+    font-size: 31px;
+  }
+  .natal-triad {
+    padding: 10px 0;
+  }
+  .natal-positions .astro-row {
+    padding: 11px 20px;
+  }
+  .soul-note {
+    padding: 12px 20px;
+  }
+  .sky-wheel {
+    max-width: 300px;
+    padding: 8px 33px 6px;
+  }
+  .instrument-tabs button {
+    min-height: 38px;
+  }
+  .chronometer {
+    padding: 13px 12px;
+  }
+  .chronometer input {
+    font-size: 10px;
+  }
+  .chronometer > label {
+    font-size: 6px;
+  }
+  .chronometer > label > span {
+    font-size: 6px;
+  }
+  .aspect-list .astro-row strong {
+    font-size: 10px;
+  }
+  .aspect-list .astro-row small {
+    font-size: 8px;
+  }
+  .coordinate-editor label {
+    grid-template-columns: 65px 1fr 68px 7px;
+    gap: 5px;
+    font-size: 9px;
+  }
+  .coordinate-editor input,
+  .coordinate-editor select {
+    font-size: 10px;
+    padding: 6px;
+  }
+  .dialog-content {
+    padding: 18px;
+  }
+  .dialog-content > p {
+    font-size: 10px;
+  }
+  .window-controls {
+    padding: 16px 13px;
+    grid-template-columns: 88px 1fr;
+  }
+  .window-controls select {
+    font-size: 9px;
+  }
+  .event-row {
+    padding: 15px 13px;
+    gap: 10px;
+  }
+  .event-row strong {
+    font-size: 10px;
+  }
+  .instrument-note {
+    font-size: 8px;
+  }
+  .wide-only {
+    display: none;
+  }
+}
+@media (max-height: 760px) and (min-width: 951px) {
+  .console-masthead {
+    height: 65px;
+    margin-bottom: 10px;
+  }
+  .natal-wheel {
+    max-width: 205px;
+  }
+  .pilot-identity {
+    padding-top: 13px;
+  }
+  .natal-triad {
+    padding: 8px 0;
+    margin-bottom: 7px;
+  }
+  .soul-note {
+    padding: 10px;
+  }
+  .sky-wheel {
+    max-width: 265px;
+    padding-top: 4px;
+  }
+  .terminal-welcome {
+    padding-top: 24px;
+  }
+  .boot-lines {
+    margin-bottom: 20px;
+  }
+  .terminal-welcome h1 {
+    font-size: 45px;
+  }
+  .starter-commands {
+    margin-top: 18px;
+  }
+  .starter-commands button {
+    padding: 11px 0;
+  }
+  .nova-bay {
+    height: 103px;
+  }
+  .nova-robot {
+    scale: 0.9;
+  }
+  .nova-station {
+    height: 89px;
+  }
+  .soul-note p {
+    font-size: 7px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .nova-shell {
+    transform: none !important;
+  }
+}
+/* Instrument labels remain readable at normal desktop scale. */
+.module-heading {
+  font-size: 10px;
+}
+.module-heading > span:last-child {
+  font-size: 9px;
+}
+.pilot-code {
+  font-size: 8px;
+}
+.pilot-identity > button {
+  font-size: 9px;
+}
+.list-heading {
+  font-size: 9px;
+}
+.astro-row strong {
+  font-size: 11px;
+}
+.astro-row small {
+  font-size: 9px;
+}
+.numeric {
+  font-size: 10px;
+}
+.natal-triad small {
+  font-size: 8px;
+}
+.natal-triad strong {
+  font-size: 11px;
+}
+.soul-note > span {
+  font-size: 8px;
+}
+.soul-note p,
+.soul-note a {
+  font-size: 9px;
+}
+.module-foot {
+  font-size: 8px;
+  letter-spacing: 0;
+}
+.console-bottom {
+  font-size: 8px;
+}
+.boot-lines {
+  font-size: 9px;
+}
+.starter-commands button {
+  font-size: 11px;
+}
+.welcome-caption {
+  font-size: 12px;
+}
+.context-date {
+  font-size: 11px;
+}
+.context-date small {
+  font-size: 8px;
+}
+.channel-context > label {
+  font-size: 8px;
+}
+.message-markdown {
+  font-size: 14px;
+}
+.transmission header {
+  font-size: 9px;
+}
+.transmission footer {
+  font-size: 7px;
+}
+.nova-dialogue p {
+  font-size: 11px;
+}
+.nova-id small {
+  font-size: 7px;
+}
+.nova-hint {
+  font-size: 8px;
+}
+.composer-field textarea {
+  font-size: 12px;
+}
+.composer-foot {
+  font-size: 7px;
+}
+.forecast-scope {
+  font-size: 8px;
+  line-height: 1.8;
+  color: #b99bca;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--line);
+}
+@media (max-width: 1199px) and (min-width: 951px) {
+  .module-heading {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+  .module-heading > span:last-child {
+    font-size: 7px;
+  }
+  .soul-note p {
+    font-size: 8px;
+  }
+  .module-foot,
+  .console-bottom {
+    font-size: 6px;
+  }
+  .nova-id small {
+    font-size: 5px;
+  }
+  .nova-hint {
+    font-size: 6px;
+  }
+  .nova-dialogue p {
+    font-size: 9px;
+  }
+  .starter-commands button {
+    font-size: 10px;
+  }
+  .welcome-caption {
+    font-size: 11px;
+  }
+  .context-date {
+    font-size: 10px;
+  }
+  .context-date small {
+    font-size: 6px;
+  }
+  .channel-context > label {
+    font-size: 6px;
+  }
+  .composer-foot {
+    font-size: 5px;
+  }
+}
+@media (max-width: 540px) {
+  .module-heading {
+    font-size: 8px;
+  }
+  .module-heading > span:last-child {
+    font-size: 7px;
+  }
+  .context-date {
+    font-size: 9px;
+  }
+  .context-date small {
+    font-size: 6px;
+  }
+  .channel-context > label {
+    font-size: 6px;
+  }
+  .boot-lines {
+    font-size: 7px;
+  }
+  .starter-commands button {
+    font-size: 9px;
+  }
+  .welcome-caption {
+    font-size: 10px;
+  }
+  .message-markdown {
+    font-size: 12px;
+  }
+  .transmission header {
+    font-size: 7px;
+  }
+  .transmission footer {
+    font-size: 6px;
+  }
+  .nova-dialogue p {
+    font-size: 9px;
+  }
+  .nova-id small {
+    font-size: 5px;
+  }
+  .nova-hint {
+    font-size: 6px;
+  }
+  .composer-field textarea {
+    font-size: 10px;
+  }
+  .composer-foot {
+    font-size: 5px;
+  }
+  .module-foot {
+    font-size: 7px;
+  }
+  .console-bottom {
+    font-size: 5px;
+  }
+  .list-heading {
+    font-size: 8px;
+  }
+}
+
+.chronometer .jump-button {
+  font-size: 8px;
+  color: var(--purple);
+  border: 1px solid #614079;
+  min-width: 28px;
+  margin: 0 2px;
+  background: #281731;
+}
+.sound-toggle[aria-pressed="true"] {
+  color: var(--cyan);
+}
+@media(max-height:680px) and (max-width:950px){
+  .console-masthead{height:54px}.brand strong{font-size:28px}.brand-mark{font-size:25px}.brand small{font-size:5px}.mobile-navigation{height:36px;margin-bottom:6px}.mobile-navigation button{font-size:8px}.module-heading{min-height:32px}.channel-context{min-height:36px;padding-top:4px;padding-bottom:4px}.channel-context select{min-height:26px}.nova-bay{height:76px;padding:4px 13px;gap:9px}.nova-station{height:66px;width:70px}.nova-robot{scale:.68}.station-ring{width:65px;height:12px;bottom:0}.nova-hint{display:none}.nova-dialogue p{font-size:10px;margin:6px 0 0}.nova-id small{font-size:6px}.terminal-composer{padding:9px 12px 8px;gap:7px}.composer-field{padding:8px}.composer-field textarea{font-size:11px;line-height:1.6;height:35px;min-height:35px}.composer-foot{font-size:5px}.console-bottom{height:22px}.terminal-welcome{padding-top:20px}.boot-lines{margin-bottom:16px}.terminal-welcome h1{font-size:40px}.starter-commands{margin-top:16px}.starter-commands button{padding:12px 0}
+}
+.nova-hint:has(button){display:block}

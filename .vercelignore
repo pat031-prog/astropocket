@@ -1,0 +1,9 @@
+.env
+.env.*
+artifacts
+src
+tests
+data/geonames/*.zip
+data/geonames/*.txt
+*.zip
+public/voice-runtime

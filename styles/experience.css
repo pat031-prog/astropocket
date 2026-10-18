@@ -1,0 +1,1659 @@
+/* The instrument keeps its terminal typography. The conversation is a reading surface. */
+.astropocket:before {
+  display: none;
+}
+.log-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+.transmission-log {
+  height: 100%;
+  padding: 0 28px;
+  overflow-anchor: none;
+  scrollbar-gutter: auto;
+}
+.conversation-history {
+  max-width: 720px;
+  min-height: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 8px 0 24px;
+}
+.transmission {
+  padding: 25px 0;
+  border-bottom: 0;
+  max-width: 100%;
+  position: relative;
+}
+.transmission.model:last-of-type {
+  min-height: calc(var(--reading-height, 300px) - 90px);
+}
+.transmission header {
+  font-size: 10px;
+  color: #c5a1da;
+  letter-spacing: 0.7px;
+  margin-bottom: 13px;
+}
+.transmission header time {
+  font-size: 9px;
+  color: #957d9f;
+}
+.message-markdown {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #e4dce9;
+  letter-spacing: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+  text-shadow: none;
+  max-width: 68ch;
+}
+.message-markdown p + p,
+.message-markdown p + ul,
+.message-markdown p + ol,
+.message-markdown ul + p,
+.message-markdown ol + p {
+  margin-top: 19px;
+}
+.message-markdown strong {
+  font-weight: 600;
+  color: #f0e4f6;
+}
+.message-markdown h1,
+.message-markdown h2,
+.message-markdown h3 {
+  font-family: inherit;
+  font-size: 19px;
+  line-height: 1.45;
+  color: #f0d6ff;
+  margin: 24px 0 12px;
+}
+.message-markdown ul,
+.message-markdown ol {
+  padding-left: 22px;
+  margin: 14px 0 18px;
+}
+.message-markdown li {
+  padding-left: 3px;
+  margin: 9px 0;
+  line-height: 1.7;
+}
+.message-markdown li::marker {
+  color: #a880c0;
+}
+.message-markdown table {
+  display: block;
+  max-width: 100%;
+  overflow: auto;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 16px 0;
+}
+.message-markdown td,
+.message-markdown th {
+  padding: 8px 12px;
+  border: 1px solid #3f2a4c;
+  text-align: left;
+}
+.transmission.user {
+  margin: 10px 0 6px auto;
+  width: fit-content;
+  max-width: 90%;
+  background: #15202a88;
+  border: 1px solid #304152;
+  padding: 15px 19px;
+  border-radius: 12px 12px 2px 12px;
+}
+.transmission.user header {
+  font-size: 9px;
+  gap: 26px;
+  margin-bottom: 8px;
+  color: #86c8e0;
+}
+.transmission.user .message-markdown {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #dce8ef;
+}
+.transmission.failed .message-markdown {
+  color: #e9c995;
+}
+.reading-provenance {
+  margin-top: 24px;
+  border-top: 1px solid #30223c;
+  padding-top: 11px;
+  color: #a48cb1;
+  font-size: 10px;
+}
+.reading-provenance summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: fit-content;
+  min-height: 30px;
+}
+.reading-provenance summary::-webkit-details-marker {
+  display: none;
+}
+.reading-provenance summary > span {
+  color: #d8adee;
+}
+.reading-provenance[open] summary > span {
+  rotate: 45deg;
+}
+.reading-provenance footer {
+  font-size: 8px;
+  gap: 12px;
+  line-height: 1.9;
+  margin: 8px 0;
+}
+.jump-to-latest {
+  position: absolute;
+  bottom: 14px;
+  right: 24px;
+  z-index: 6;
+  background: #251832;
+  border: 1px solid #78528d;
+  border-radius: 24px;
+  min-height: 40px;
+  padding: 9px 15px;
+  color: #f1defb;
+  font:
+    12px "Segoe UI",
+    system-ui;
+  box-shadow: 0 4px 18px #0009;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.jump-to-latest:hover {
+  background: #382144;
+}
+.jump-to-latest span {
+  color: #d6acf0;
+  font-size: 18px;
+}
+.terminal-composer {
+  padding: 14px 18px 10px;
+  grid-template-columns: minmax(0, 1fr) 66px;
+  gap: 9px;
+  background: #100b17;
+  z-index: 3;
+}
+.composer-field {
+  padding: 12px 14px;
+  align-items: flex-start;
+  border-color: #664777;
+  border-radius: 10px;
+  background: #0a0710;
+}
+.composer-field textarea {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #f0e5f5;
+  min-height: 44px;
+  max-height: 144px;
+  overflow-y: auto;
+}
+.composer-field textarea::placeholder {
+  color: #a28bb0;
+}
+.prompt-marker {
+  font-size: 11px;
+  padding-top: 5px;
+  color: #ac7cc5;
+}
+.transmit-button {
+  border-radius: 9px;
+  font-size: 9px;
+  background: #392047;
+  border-color: #805399;
+}
+.transmit-button > span {
+  font-size: 21px;
+}
+.transmit-button:disabled {
+  background: #17101f;
+}
+.composer-foot {
+  font-size: 7px;
+  letter-spacing: 0;
+  color: #937ba2;
+}
+.composer-foot > span:last-child {
+  display: none;
+}
+.computation-line {
+  font-size: 9px;
+  padding: 16px 0;
+  color: #a6d8e9;
+}
+.lens-note {
+  font-size: 9px;
+  padding: 7px 18px;
+  color: #a995b5;
+}
+.channel-heading > div {
+  gap: 12px;
+}
+.channel-heading button {
+  font-size: 10px;
+  min-height: 38px;
+  padding: 7px 0;
+  min-width: 22px;
+}
+.solo-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #deb7f5 !important;
+}
+.solo-toggle span {
+  font-size: 8px;
+  white-space: nowrap;
+}
+.channel-title {
+  white-space: nowrap;
+}
+.nova-slot {
+  flex-shrink: 0;
+}
+.nova-bay {
+  height: 155px;
+  padding: 10px 22px;
+  gap: 19px;
+  background:
+    radial-gradient(ellipse at 12% 100%, #42254b55, transparent 70%), #140d1b;
+}
+.nova-station {
+  width: 136px;
+  height: 132px;
+}
+.nova-robot {
+  width: 112px;
+  height: 116px;
+  flex-shrink: 0;
+  scale: 1;
+  filter: drop-shadow(0 5px 10px #0009) drop-shadow(0 0 12px #d4acff19);
+}
+.nova-shell {
+  inset: 14px 0 8px;
+  border-radius: 21px 21px 18px 18px;
+  border-color: #b28bc7;
+  background: linear-gradient(140deg, #3c2b49, #1a1023 55%);
+  box-shadow:
+    inset 3px 3px 1px #e6c9ff1a,
+    inset -4px -4px 2px #0009,
+    0 4px 0 #040207;
+}
+.nova-screen {
+  inset: 9px 8px 25px;
+  border-radius: 14px;
+  border-color: #5a3d70;
+  background: radial-gradient(ellipse at 50% 70%, #111526, #020307 70%);
+}
+.nova-eyes {
+  gap: 20px;
+}
+.nova-eyes i {
+  width: 14px;
+  height: 24px;
+  border-radius: 5px;
+  background: #eff6ff;
+  box-shadow: 0 0 7px #b7d8ff88;
+}
+.nova-mouth {
+  width: 10px;
+  left: calc(50% - 5px);
+  bottom: 9px;
+}
+.nova-leds {
+  bottom: 9px;
+  gap: 10px;
+}
+.nova-leds i {
+  width: 4px;
+  height: 4px;
+}
+.nova-antenna {
+  height: 24px;
+  top: 0;
+}
+.nova-antenna.left {
+  left: 23px;
+}
+.nova-antenna.right {
+  right: 23px;
+}
+.nova-antenna:before {
+  width: 8px;
+  height: 8px;
+  left: -3px;
+  top: -4px;
+}
+.nova-feet {
+  left: 20px;
+  right: 20px;
+}
+.nova-feet i {
+  width: 19px;
+  height: 13px;
+  border-color: #9265ab;
+}
+.station-ring {
+  width: 125px;
+  height: 22px;
+  bottom: -2px;
+  border-color: #8657a366;
+  background: #c890ff0a;
+}
+.nova-dialogue {
+  flex: 1;
+  max-width: 390px;
+  border-color: #785288;
+  padding-left: 16px;
+}
+.nova-id {
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+.nova-id small {
+  font-size: 7px;
+}
+.nova-dialogue p {
+  font:
+    14px/1.55 "Segoe UI",
+    system-ui,
+    sans-serif;
+  color: #d9c3e5;
+  margin: 9px 0;
+}
+.nova-hint {
+  font-size: 8px;
+  display: block;
+}
+.nova-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+.nova-actions button {
+  font-size: 8px;
+  color: #c4a1d6;
+  min-height: 29px;
+  padding: 3px 0;
+  white-space: nowrap;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.nova-actions button span {
+  color: #e3b8ff;
+  font-size: 12px;
+}
+.nova-orbital-ring,
+.nova-cheek {
+  display: none;
+}
+.mood-listening .nova-eyes i {
+  height: 27px;
+  width: 15px;
+}
+.mood-scanning .nova-eyes i {
+  height: 11px;
+}
+.mood-happy .nova-eyes i,
+.mood-success .nova-eyes i {
+  height: 13px;
+  border-top-width: 4px;
+}
+.mood-dragging .nova-eyes i {
+  height: 29px;
+  width: 16px;
+}
+.mood-sleeping .nova-eyes i {
+  height: 3px;
+}
+.variant-mimo {
+  --nova-accent: #a9e2cc;
+}
+.variant-mimo .nova-shell {
+  border-radius: 48% 48% 37% 37%;
+  background: linear-gradient(140deg, #405f5a, #192a2b 65%);
+  border-color: #9cceb7;
+}
+.variant-mimo .nova-screen {
+  inset: 14px 8px 25px;
+  border-radius: 40% 40% 35% 35%;
+  border-color: #649f93;
+}
+.variant-mimo .nova-eyes i {
+  border-radius: 50%;
+}
+.variant-mimo .nova-antenna {
+  height: 15px;
+  top: 9px;
+  background: #8ac4ac;
+}
+.variant-mimo .nova-antenna:before {
+  background: #c5eddb;
+}
+.variant-mimo .nova-cheek {
+  display: block;
+  position: absolute;
+  bottom: 12px;
+  width: 9px;
+  height: 4px;
+  background: #e7a7bb66;
+  border-radius: 50%;
+}
+.variant-mimo .nova-cheek.left {
+  left: 15px;
+}
+.variant-mimo .nova-cheek.right {
+  right: 15px;
+}
+.variant-mimo .nova-feet i {
+  background: #254039;
+  border-color: #7eb79f;
+}
+.variant-mimo .nova-id {
+  color: #b5e4d3;
+}
+.variant-orbit .nova-shell {
+  border-radius: 50% 50% 43% 43%;
+  background: linear-gradient(140deg, #b6a38f, #4c4652 50%, #302533);
+  border-color: #ebd0ac;
+}
+.variant-orbit .nova-screen {
+  inset: 10px 8px 24px;
+  border-radius: 50%;
+  border-color: #d0b294;
+  border-width: 2px;
+  background: radial-gradient(ellipse at 50% 70%, #172538, #030710);
+}
+.variant-orbit .nova-orbital-ring {
+  display: block;
+  position: absolute;
+  width: 144px;
+  height: 36px;
+  left: -16px;
+  top: 78px;
+  border: 2px solid #d7af7766;
+  border-left-color: #efd5a1;
+  border-bottom-color: #eac28b;
+  rotate: -17deg;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+}
+.variant-orbit .nova-antenna.right {
+  display: none;
+}
+.variant-orbit .nova-antenna.left {
+  left: 26px;
+  rotate: -25deg;
+  background: #e1bd89;
+}
+.variant-orbit .nova-antenna:before {
+  background: #edc789;
+}
+.variant-orbit .nova-feet i {
+  border-color: #b4a08a;
+  background: #514350;
+}
+.variant-orbit .nova-id {
+  color: #f4cc9e;
+}
+.variant-bit .nova-shell {
+  border-radius: 4px;
+  background: linear-gradient(140deg, #4c4930, #24251d 60%);
+  border-color: #c5c382;
+  box-shadow:
+    3px 0 #777549,
+    -3px 0 #777549,
+    0 3px #777549,
+    0 -3px #777549,
+    inset 3px 3px #dbd7a41c;
+}
+.variant-bit .nova-screen {
+  border-radius: 2px;
+  border-color: #85834d;
+  background: #060b0b;
+  inset: 10px 9px 24px;
+}
+.variant-bit .nova-eyes i {
+  border-radius: 0;
+  width: 13px;
+}
+.variant-bit .nova-antenna {
+  rotate: 0deg;
+  background: #b1b57c;
+  height: 21px;
+}
+.variant-bit .nova-antenna:before {
+  border-radius: 0;
+  background: #dfe0a5;
+  box-shadow:
+    2px 0 #c6b679,
+    -2px 0 #c6b679;
+}
+.variant-bit .nova-antenna.left {
+  left: 24px;
+  top: 2px;
+}
+.variant-bit .nova-antenna.right {
+  right: 24px;
+  height: 15px;
+  top: 8px;
+}
+.variant-bit .nova-feet i {
+  border-radius: 0;
+  background: #343625;
+  border-color: #b0b579;
+}
+.variant-bit .nova-id {
+  color: #d9dca4;
+}
+.nova-collection {
+  max-width: 760px;
+}
+.collection-intro {
+  padding: 25px 25px 12px;
+}
+.collection-intro > span {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #a68bb5;
+}
+.collection-intro h2 {
+  font: 36px "VT323";
+  margin: 8px 0;
+  color: #f0dcfc;
+}
+.collection-intro p,
+.collection-tip {
+  font:
+    14px/1.6 "Segoe UI",
+    system-ui;
+  color: #bba4c6;
+}
+.nova-designs {
+  padding: 12px 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.nova-design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #3e2b4b;
+  padding: 13px 8px 10px;
+  background: #160e1e;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.nova-design[aria-pressed="true"] {
+  border-color: #c59de1;
+  background: #281a34;
+  box-shadow: 0 0 20px #c59de110;
+}
+.design-number {
+  font-size: 7px;
+  letter-spacing: 1px;
+  align-self: flex-start;
+  color: #a88fba;
+}
+.design-preview {
+  height: 144px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.design-preview .nova-robot {
+  display: block;
+  pointer-events: none;
+  cursor: inherit;
+  scale: 0.9;
+}
+.nova-design strong {
+  font: 28px "VT323";
+  color: #ead6f8;
+}
+.nova-design small {
+  font: 11px "Segoe UI";
+  color: #b8a1c3;
+  margin: 5px 0 15px;
+}
+.design-select {
+  font-size: 7px;
+  color: #c5a2dd;
+  padding-top: 10px;
+  border-top: 1px solid #453152;
+  width: 100%;
+}
+.collection-tip {
+  font-size: 12px;
+  padding: 8px 25px 24px;
+}
+/* Once a reading starts, Nova moves into the header and frees the reading area. */
+.has-messages:not(.companion-mode) .nova-slot {
+  position: absolute;
+  top: 0;
+  left: 13px;
+  width: 54px;
+  height: 56px;
+  z-index: 4;
+}
+.has-messages:not(.companion-mode) .nova-bay {
+  height: 56px;
+  width: 54px;
+  padding: 0;
+  border: 0;
+  background: none;
+  gap: 0;
+}
+.has-messages:not(.companion-mode) .nova-station {
+  width: 54px;
+  height: 56px;
+  flex-shrink: 0;
+}
+.has-messages:not(.companion-mode) .nova-slot .nova-robot {
+  scale: 0.44;
+}
+.has-messages:not(.companion-mode) .nova-dialogue,
+.has-messages:not(.companion-mode) .station-ring {
+  display: none;
+}
+.has-messages:not(.companion-mode) .channel-heading {
+  padding-left: 77px;
+  min-height: 56px;
+}
+.has-messages .terminal-welcome {
+  display: none;
+}
+/* One continuous conversation. Switching modes preserves the same component and history. */
+.companion-mode .mobile-navigation,
+.companion-mode .soul-panel,
+.companion-mode .sky-panel,
+.companion-mode .masthead-frequency {
+  display: none;
+}
+.companion-mode .console-grid {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.companion-mode .channel-panel {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+  grid-template-rows: 44px 45px minmax(0, 1fr) auto;
+  overflow: hidden;
+}
+.companion-mode .channel-heading {
+  grid-column: 1/-1;
+  grid-row: 1;
+}
+.companion-mode .channel-context {
+  grid-column: 2;
+  grid-row: 2;
+}
+.companion-mode .lens-note {
+  display: none;
+}
+.companion-mode .log-frame {
+  grid-column: 2;
+  grid-row: 3;
+}
+.companion-mode .terminal-composer {
+  grid-column: 2;
+  grid-row: 4;
+}
+.companion-mode .nova-slot {
+  grid-column: 1;
+  grid-row: 2/5;
+  min-height: 0;
+}
+.companion-mode .nova-bay {
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px 18px;
+  border-top: 0;
+  border-right: 1px solid #3a2546;
+  background:
+    radial-gradient(ellipse at 50% 30%, #49284d55, transparent 70%), #120c19;
+}
+.companion-mode .nova-station {
+  width: 240px;
+  height: 252px;
+}
+.companion-mode .nova-slot .nova-robot {
+  scale: 1.7;
+}
+.companion-mode .station-ring {
+  width: 195px;
+  height: 34px;
+  bottom: 2px;
+}
+.companion-mode .nova-dialogue {
+  border: 0;
+  text-align: center;
+  padding: 0;
+  max-width: 245px;
+  flex: 0;
+}
+.companion-mode .nova-dialogue:before {
+  display: none;
+}
+.companion-mode .nova-id {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 34px;
+  gap: 7px;
+}
+.companion-mode .nova-id small {
+  font-size: 8px;
+}
+.companion-mode .nova-dialogue p {
+  font-size: 16px;
+  margin: 17px 0 12px;
+}
+.companion-mode .nova-actions {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+.companion-mode .nova-actions button {
+  font-size: 9px;
+  min-height: 36px;
+}
+.companion-mode .terminal-welcome h1 {
+  font-size: 48px;
+}
+.companion-mode .terminal-welcome {
+  padding-top: 25px;
+}
+.companion-mode .welcome-caption {
+  font-family: "Segoe UI";
+  font-size: 16px;
+  line-height: 1.6;
+}
+.companion-mode .boot-lines {
+  display: none;
+}
+@media (min-width: 1200px) {
+  .console-grid {
+    grid-template-columns: 300px minmax(380px, 1fr) 330px;
+  }
+  .natal-wheel {
+    max-width: 290px;
+    padding: 0 12px;
+  }
+  .sky-wheel {
+    padding: 8px 20px;
+  }
+  .pilot-identity h2 {
+    font-size: 33px;
+  }
+  .channel-context {
+    padding: 8px 23px;
+  }
+  .channel-context select {
+    font-size: 11px;
+    min-height: 31px;
+  }
+  .context-date {
+    font-size: 11px;
+  }
+}
+@media (max-width: 950px) {
+  .transmission-log {
+    padding: 0 25px;
+  }
+  .companion-mode .channel-panel {
+    grid-template-columns: 230px minmax(0, 1fr);
+  }
+  .companion-mode .nova-station {
+    width: 190px;
+    height: 215px;
+  }
+  .companion-mode .nova-slot .nova-robot {
+    scale: 1.45;
+  }
+  .companion-mode .station-ring {
+    width: 160px;
+  }
+  .companion-mode .nova-id {
+    font-size: 30px;
+  }
+  .companion-mode .nova-dialogue p {
+    font-size: 15px;
+  }
+  .companion-mode .terminal-welcome h1 {
+    font-size: 43px;
+  }
+  .companion-mode .starter-commands button {
+    font-size: 10px;
+  }
+  .console-bottom > span {
+    font-size: 6px;
+  }
+}
+@media (max-width: 700px) {
+  .console-masthead {
+    height: 56px;
+  }
+  .brand strong {
+    font-size: 28px;
+  }
+  .brand small {
+    font-size: 5px;
+  }
+  .brand-mark {
+    font-size: 25px;
+  }
+  .masthead-controls {
+    gap: 10px;
+  }
+  .masthead-controls time {
+    display: none;
+  }
+  .mobile-navigation {
+    height: 37px;
+    margin-bottom: 7px;
+  }
+  .mobile-navigation button {
+    font-size: 9px;
+  }
+  .console-bottom {
+    height: 20px;
+  }
+  .channel-heading {
+    min-height: 42px;
+  }
+  .channel-heading > div {
+    gap: 10px;
+  }
+  .channel-heading button {
+    font-size: 13px;
+    min-width: 22px;
+  }
+  .tool-word {
+    display: none;
+  }
+  .channel-heading .solo-toggle {
+    gap: 4px;
+  }
+  .solo-toggle span {
+    font-size: 7px;
+  }
+  .channel-title {
+    font-size: 9px;
+    letter-spacing: 0.4px;
+  }
+  .channel-context {
+    min-height: 36px;
+    padding: 4px 13px;
+  }
+  .channel-context select {
+    min-height: 27px;
+    font-size: 10px;
+  }
+  .channel-context > label {
+    font-size: 0;
+    gap: 0;
+  }
+  .context-date {
+    font-size: 9px;
+  }
+  .context-date small {
+    font-size: 6px;
+  }
+  .lens-note {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .transmission-log {
+    padding: 0 19px;
+  }
+  .message-markdown {
+    font-size: 16px;
+    line-height: 1.72;
+  }
+  .transmission.user .message-markdown {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .transmission.user {
+    max-width: 94%;
+    padding: 13px 15px;
+  }
+  .message-markdown h1,
+  .message-markdown h2,
+  .message-markdown h3 {
+    font-size: 18px;
+  }
+  .transmission header {
+    font-size: 9px;
+  }
+  .transmission header time {
+    font-size: 8px;
+  }
+  .transmission {
+    padding: 21px 0;
+  }
+  .terminal-composer {
+    padding: 11px 12px 8px;
+    grid-template-columns: minmax(0, 1fr) 49px;
+    gap: 8px;
+  }
+  .composer-field {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .composer-field textarea {
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 44px;
+  }
+  .transmit-button {
+    font-size: 7px;
+  }
+  .transmit-button > span {
+    font-size: 19px;
+  }
+  .composer-foot {
+    font-size: 6px;
+  }
+  .nova-bay {
+    height: 144px;
+    padding: 8px 14px;
+    gap: 10px;
+  }
+  .nova-station {
+    width: 120px;
+    height: 124px;
+  }
+  .nova-dialogue {
+    padding-left: 13px;
+  }
+  .nova-id {
+    font-size: 25px;
+    gap: 7px;
+  }
+  .nova-id small {
+    font-size: 6px;
+  }
+  .nova-dialogue p {
+    font-size: 13px;
+    margin: 8px 0;
+  }
+  .nova-actions {
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 7px;
+  }
+  .nova-actions button {
+    font-size: 7px;
+    min-height: 28px;
+  }
+  .nova-hint {
+    display: none;
+  }
+  .terminal-welcome {
+    padding-top: 26px;
+  }
+  .terminal-welcome h1 {
+    font-size: 41px;
+  }
+  .welcome-caption {
+    font-family: "Segoe UI";
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .boot-lines {
+    font-size: 8px;
+    margin-bottom: 22px;
+  }
+  .starter-commands button {
+    font-size: 10px;
+    padding: 14px 0;
+  }
+  .jump-to-latest {
+    right: 14px;
+    bottom: 12px;
+    font-size: 12px;
+  }
+  .reading-provenance summary {
+    font-size: 11px;
+  }
+  .nova-designs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 12px 18px;
+  }
+  .design-preview {
+    height: 112px;
+  }
+  .design-preview .nova-robot {
+    scale: 0.76;
+  }
+  .collection-intro {
+    padding: 21px 20px 5px;
+  }
+  .collection-intro h2 {
+    font-size: 32px;
+  }
+  .collection-intro p {
+    font-size: 13px;
+  }
+  .collection-tip {
+    font-size: 11px;
+    padding: 8px 20px 20px;
+  }
+  .nova-design small {
+    font-size: 11px;
+    margin-bottom: 9px;
+  }
+  .companion-mode .channel-panel {
+    display: flex;
+    flex-direction: column;
+  }
+  .companion-mode .channel-heading {
+    order: 0;
+  }
+  .companion-mode .channel-context {
+    order: 1;
+  }
+  .companion-mode .nova-slot {
+    order: 2;
+  }
+  .companion-mode .log-frame {
+    order: 3;
+    flex: 1;
+  }
+  .companion-mode .terminal-composer {
+    order: 4;
+  }
+  .companion-mode .nova-bay {
+    height: 170px;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    padding: 6px 17px;
+    border-right: 0;
+    border-bottom: 1px solid #34213f;
+  }
+  .companion-mode .nova-station {
+    width: 150px;
+    height: 150px;
+  }
+  .companion-mode .nova-slot .nova-robot {
+    scale: 1.15;
+  }
+  .companion-mode .station-ring {
+    width: 130px;
+    height: 23px;
+    bottom: 1px;
+  }
+  .companion-mode .nova-dialogue {
+    flex: 1;
+    text-align: left;
+    max-width: 220px;
+  }
+  .companion-mode .nova-id {
+    align-items: flex-start;
+    font-size: 30px;
+    gap: 5px;
+  }
+  .companion-mode .nova-id small {
+    font-size: 6px;
+  }
+  .companion-mode .nova-dialogue p {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+  .companion-mode .nova-actions {
+    align-items: flex-start;
+    margin-top: 6px;
+    gap: 0;
+  }
+  .companion-mode .nova-actions button {
+    font-size: 7px;
+    min-height: 27px;
+  }
+  .companion-mode .nova-hint {
+    display: none;
+  }
+  .companion-mode .terminal-welcome {
+    padding-top: 22px;
+  }
+  .companion-mode .terminal-welcome h1 {
+    font-size: 37px;
+  }
+  .has-messages.companion-mode .nova-bay {
+    height: 100px;
+    justify-content: flex-start;
+    padding: 5px 15px;
+    gap: 7px;
+  }
+  .has-messages.companion-mode .nova-station {
+    width: 106px;
+    height: 92px;
+  }
+  .has-messages.companion-mode .nova-slot .nova-robot {
+    scale: 0.8;
+  }
+  .has-messages.companion-mode .nova-id {
+    font-size: 24px;
+  }
+  .has-messages.companion-mode .nova-dialogue p {
+    font-size: 12px;
+    margin: 7px 0 0;
+  }
+  .has-messages.companion-mode .nova-actions,
+  .has-messages.companion-mode .station-ring {
+    display: none;
+  }
+}
+@media (max-width: 370px) {
+  .astropocket {
+    padding: 0 6px;
+  }
+  .brand strong {
+    font-size: 25px;
+  }
+  .brand-mark {
+    font-size: 22px;
+  }
+  .masthead-controls {
+    gap: 7px;
+  }
+  .connection-button {
+    font-size: 6px;
+  }
+  .transmission-log {
+    padding: 0 16px;
+  }
+  .message-markdown {
+    font-size: 16px;
+  }
+  .channel-heading > div {
+    gap: 6px;
+  }
+  .channel-title {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .solo-toggle span {
+    font-size: 6px;
+  }
+  .context-date small {
+    display: none;
+  }
+  .nova-bay {
+    padding: 6px 9px;
+    gap: 5px;
+  }
+  .nova-station {
+    width: 104px;
+  }
+  .nova-robot {
+    scale: 0.92;
+  }
+  .nova-dialogue p {
+    font-size: 12px;
+  }
+  .nova-id small {
+    font-size: 5px;
+  }
+  .nova-actions {
+    gap: 2px;
+  }
+  .companion-mode .nova-station {
+    width: 125px;
+  }
+  .companion-mode .nova-slot .nova-robot {
+    scale: 1;
+  }
+  .companion-mode .nova-id {
+    font-size: 26px;
+  }
+  .companion-mode .nova-dialogue p {
+    font-size: 13px;
+  }
+  .has-messages:not(.companion-mode) .channel-heading {
+    padding-left: 66px;
+  }
+  .has-messages:not(.companion-mode) .nova-slot {
+    left: 6px;
+  }
+}
+@media (max-height: 680px) and (min-width: 701px) {
+  .nova-bay {
+    height: 125px;
+  }
+  .nova-station {
+    height: 109px;
+    width: 116px;
+  }
+  .nova-robot {
+    scale: 0.9;
+  }
+  .nova-dialogue p {
+    font-size: 13px;
+  }
+  .nova-actions {
+    margin-top: 5px;
+  }
+  .companion-mode .nova-slot .nova-robot {
+    scale: 1.35;
+  }
+  .companion-mode .nova-station {
+    height: 180px;
+    width: 200px;
+  }
+  .companion-mode .nova-dialogue p {
+    font-size: 14px;
+  }
+  .companion-mode .nova-actions {
+    margin-top: 8px;
+  }
+  .companion-mode .nova-bay {
+    gap: 12px;
+  }
+  .companion-mode .console-masthead {
+    height: 60px;
+  }
+  .companion-mode .nova-hint {
+    display: none;
+  }
+}
+@media (max-height: 680px) and (max-width: 700px) {
+  .nova-bay {
+    height: 120px;
+  }
+  .nova-station {
+    height: 105px;
+    width: 105px;
+  }
+  .nova-robot {
+    scale: 0.85;
+  }
+  .nova-actions {
+    margin-top: 3px;
+  }
+  .nova-id {
+    font-size: 22px;
+  }
+  .nova-dialogue p {
+    font-size: 12px;
+    margin: 7px 0;
+  }
+  .boot-lines {
+    display: none;
+  }
+  .terminal-welcome {
+    padding-top: 22px;
+  }
+  .terminal-welcome h1 {
+    font-size: 36px;
+  }
+  .starter-commands {
+    margin-top: 18px;
+  }
+  .terminal-composer {
+    padding-top: 9px;
+    padding-bottom: 7px;
+  }
+  .composer-field {
+    padding: 9px 10px;
+  }
+  .has-messages.companion-mode .nova-bay {
+    height: 84px;
+  }
+  .has-messages.companion-mode .nova-station {
+    height: 78px;
+    width: 92px;
+  }
+  .has-messages.companion-mode .nova-slot .nova-robot {
+    scale: 0.67;
+  }
+  .companion-mode .nova-bay {
+    height: 135px;
+  }
+  .companion-mode .nova-station {
+    height: 125px;
+    width: 125px;
+  }
+  .companion-mode .nova-slot .nova-robot {
+    scale: 0.95;
+  }
+  .companion-mode .nova-dialogue p {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nova-robot {
+    transition: none;
+  }
+  .reading-provenance[open] summary > span {
+    rotate: 0deg;
+  }
+}
+.chart-hidden {
+  display: none !important;
+}
+.chart-source {
+  display: block;
+  font-size: 8px;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  color: #d2b083;
+  margin: 9px 0 4px;
+}
+.chart-source.verified {
+  color: #a3d5bc;
+}
+.pilot-identity > .birth-open {
+  font-size: 10px;
+  min-height: 38px;
+  color: #e1b8f3;
+}
+.pilot-identity > button:not(.birth-open) {
+  font-size: 8px;
+  color: #927c9f;
+  min-height: 29px;
+  padding: 7px 0;
+}
+.soul-panel .instrument-tabs {
+  gap: 17px;
+  padding: 0 17px;
+}
+.soul-panel .instrument-tabs button {
+  font-size: 8px;
+}
+.natal-wheel {
+  padding: 11px 12px 5px;
+  max-width: 310px;
+}
+.soul-panel .natal-triad {
+  margin-top: 8px;
+}
+.soul-panel .soul-note {
+  margin-top: auto;
+}
+.soul-panel .natal-positions {
+  min-height: 90px;
+}
+.natal-positions .numeric small {
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+  font-size: 7px;
+  color: #9b7eaa;
+}
+.chart-dialog {
+  max-width: 730px;
+}
+.chart-large {
+  max-width: 555px;
+  margin: 8px auto;
+  padding: 10px 25px;
+}
+.chart-key {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: #35233f;
+  border-top: 1px solid #463052;
+}
+.chart-key button {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 4px 7px;
+  text-align: left;
+  padding: 12px;
+  background: #100b18;
+}
+.chart-key button > span {
+  grid-row: 1/3;
+  align-self: center;
+  font-size: 21px;
+  color: #dcb4f3;
+}
+.chart-key strong {
+  font: 12px "Segoe UI";
+  color: #e7d5f0;
+}
+.chart-key small {
+  font-size: 8px;
+  color: #b49ac1;
+}
+.birth-dialog h2 {
+  font: 34px "VT323";
+  color: #eed8fa;
+  margin-bottom: 12px;
+}
+.birth-dialog .dialog-content > p {
+  font: 15px/1.6 "Segoe UI";
+  color: #c5afcf;
+}
+.birth-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 17px 0 10px;
+}
+.birth-dialog label {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #d7bfdf;
+}
+.birth-row label,
+.house-system,
+.birth-advanced > label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.birth-dialog input,
+.birth-dialog select {
+  font-size: 13px;
+  min-height: 43px;
+  max-width: 100%;
+  width: 100%;
+  border-color: #644573;
+  padding: 9px;
+  border-radius: 5px;
+}
+.birth-dialog .unknown-time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 14px "Segoe UI";
+  letter-spacing: 0;
+  margin: 12px 0 20px;
+  color: #bca7c7;
+}
+.unknown-time input {
+  width: 15px;
+  height: 15px;
+  min-height: 0;
+  padding: 0;
+  accent-color: #c899e4;
+}
+.birth-dialog .birth-caution {
+  font-size: 13px;
+  padding: 12px 14px;
+  border: 1px solid #6b4d3b;
+  background: #281e17;
+  color: #d7c093;
+  border-radius: 6px;
+}
+.place-search {
+  position: relative;
+  margin-top: 9px;
+}
+.place-results {
+  position: relative;
+  border: 1px solid #705080;
+  border-top: 0;
+  max-height: 225px;
+  overflow: auto;
+  z-index: 2;
+  background: #1d1227;
+  border-radius: 0 0 5px 5px;
+}
+.place-results button {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 14px;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #3b2947;
+  font-family: "Segoe UI";
+  min-height: 51px;
+}
+.place-results strong {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e8d7f0;
+}
+.place-results span {
+  font-size: 11px;
+  color: #b79bc5;
+}
+.place-results button:hover,
+.place-results button:focus-visible {
+  background: #342040;
+}
+.birth-dialog .place-chosen {
+  font-size: 13px;
+  color: #b1dec4;
+  margin: 12px 0 18px;
+}
+.place-chosen small {
+  display: block;
+  font-size: 10px;
+  color: #a68eb5;
+  margin-top: 7px;
+}
+.house-system {
+  margin: 19px 0;
+}
+.birth-advanced {
+  margin: 17px 0 22px;
+  color: #bfa3d0;
+}
+.birth-advanced summary {
+  font-size: 11px;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.birth-advanced > label {
+  margin: 12px 0;
+}
+.birth-advanced p {
+  font: 12px/1.6 "Segoe UI";
+  color: #ac94b7;
+  margin-top: 12px;
+}
+.birth-dialog .birth-privacy {
+  font: 12px/1.6 "Segoe UI" !important;
+  color: #a58db2 !important;
+  margin: 15px 0 8px;
+}
+.birth-sources {
+  font-size: 8px;
+  color: #94799f;
+  line-height: 1.8;
+}
+.birth-dialog .primary-button {
+  min-height: 45px;
+  border-radius: 5px;
+}
+.birth-dialog .inline-error {
+  padding: 12px 0;
+  font: 13px/1.6 "Segoe UI";
+}
+@media (max-width: 700px) {
+  .natal-wheel {
+    max-width: 300px;
+  }
+  .chart-key {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .chart-large {
+    padding: 7px 12px;
+  }
+  .birth-dialog .dialog-content {
+    padding: 20px;
+  }
+  .birth-dialog .dialog-content > p {
+    font-size: 14px;
+  }
+  .birth-dialog label {
+    font-size: 8px;
+  }
+  .birth-row {
+    gap: 10px;
+  }
+  .birth-dialog h2 {
+    font-size: 31px;
+  }
+}
+.nova-dialogue {
+  display: flex;
+  flex-direction: column;
+}
+.nova-id {
+  order: 0;
+}
+.nova-dialogue > p {
+  order: 1;
+}
+.nova-hint {
+  order: 2;
+}
+.nova-actions {
+  order: 3;
+}
+.reading-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  padding: 8px 0;
+  line-height: 1.7;
+}
+.reading-links a {
+  color: #b4cadb;
+}
+.reading-provenance footer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: 1.6;
+}

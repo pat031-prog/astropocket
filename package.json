@@ -1,0 +1,41 @@
+{
+  "name": "astropocket",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "type-check": "tsc --noEmit",
+    "preview": "vite preview",
+    "start": "tsx server/start.ts",
+    "test": "tsx --test tests/*.test.ts",
+    "prebuild": "node scripts/prepare-voice.mjs",
+    "predev": "node scripts/prepare-voice.mjs"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.82",
+    "@google/genai": "^1.33.0",
+    "@js-temporal/polyfill": "^0.5.1",
+    "@kuntay/swisseph": "^0.2.2",
+    "@kuntay/swisseph-data": "^0.2.2",
+    "ai": "^7.0.143",
+    "astronomy-engine": "^2.1.19",
+    "ephone": "^1.0.2",
+    "onnxruntime-web": "^1.30.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "tsx": "^4.23.15",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "fake-indexeddb": "^6.2.6",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  },
+  "license": "AGPL-3.0-or-later"
+}

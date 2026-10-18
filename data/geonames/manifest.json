@@ -1,0 +1,8 @@
+{
+  "source": "https://download.geonames.org/export/dump/cities15000.zip",
+  "retrieved": "2026-10-17",
+  "records": 34166,
+  "bytes": 5796347,
+  "sha256": "535972211f4d5aafc55a58b44e800862f224d22d0853e1a11de731ba3fbcfb0f",
+  "attribution": "GeoNames — CC BY — https://www.geonames.org/"
+}

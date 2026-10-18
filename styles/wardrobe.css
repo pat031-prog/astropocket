@@ -1,0 +1,64 @@
+/* Original vector costumes keep the same gaze, touch, drag and activity states. */
+.nova-art { position:absolute; inset:-5px; display:block; animation:nova-float 5s ease-in-out infinite; }
+.nova-illustration { display:block; width:100%; height:100%; overflow:visible; }
+.nova-art-face { position:absolute; display:block; }
+.nova-art .nova-eyes { gap:10px; }
+.nova-art .nova-eyes i { width:6px; height:9px; border:0; border-radius:50%; background:#3c334a; box-shadow:none; }
+.nova-art .nova-eyes i::after { content:""; display:block; width:2px; height:2px; margin:1px; border-radius:50%; background:#fff9e9; }
+.art-mimo .nova-art-face { left:43%; top:48%; width:15%; height:10%; }
+.art-mimo .nova-eyes { gap:5px; }
+.art-mimo .nova-eyes i { width:3px; height:4px; background:#bdcfa7; border-radius:0; }
+.art-mimo .nova-eyes i::after { display:none; }
+.art-mimo .nova-mouth { width:3px; left:calc(50% - 1.5px); bottom:-1px; height:2px; background:#b7c69c; border-radius:0; }
+.art-pocket .nova-art-face { left:39%; top:44%; width:23%; height:10%; }
+.art-pocket .nova-eyes { gap:13px; }
+.art-pocket .nova-mouth { display:none; }
+.volt-ear { transform-origin:80px 75px; animation:ear-twitch 7s ease-in-out infinite; }
+.volt-ear.right { animation-delay:-2.5s; }
+.volt-tail { transform-origin:116px 112px; animation:tail-sway 4s ease-in-out infinite; }
+.volt-sparks { opacity:0; }
+.art-orbit .nova-art-face { left:44%; top:47%; width:12%; height:11%; }
+.art-orbit .nova-eyes i { width:10px; height:10px; background:#283936; }
+.art-bit .nova-art-face { left:44%; top:41%; width:12%; height:12%; }
+.art-bit .nova-eyes i { width:12px; height:12px; background:#333256; }
+.art-orbit .nova-eyes i:nth-child(2),.art-bit .nova-eyes i:nth-child(2) { display:none; }
+.art-orbit .nova-eyes,.art-bit .nova-eyes { gap:0; }
+.seraph-wheel { transform-origin:80px 84px; }
+.wheel-a { animation:celestial-turn 35s linear infinite; }
+.wheel-b { animation:celestial-turn 45s linear infinite reverse; }
+.seraph-halo { animation:halo-glow 4s ease-in-out infinite; }
+.seraph-wings { transform-origin:80px 80px; animation:wing-breathe 5s ease-in-out infinite; }
+.anomaly-tendrils { transform-origin:80px 100px; animation:tentacle-sway 4s ease-in-out infinite; }
+.anomaly-satellites { transform-origin:80px 83px; animation:satellite-drift 9s ease-in-out infinite; }
+.anomaly-stars { animation:halo-glow 3s ease-in-out infinite; }
+.mood-happy .nova-art,.mood-success .nova-art { animation:nova-hop .6s ease-in-out 2; }
+.mood-happy .nova-art .nova-eyes i,.mood-success .nova-art .nova-eyes i { height:5px; border-top:2px solid #45324c; background:none; border-radius:50% 50% 0 0; transform:translateY(1px); }
+.mood-happy .art-mimo .nova-eyes i,.mood-success .art-mimo .nova-eyes i { border-color:#d2e6b9; }
+.mood-listening .volt-ear { animation:ear-twitch 1.5s infinite; }
+.mood-listening .nova-art .nova-eyes i { height:11px; }
+.mood-listening .art-mimo .nova-eyes i { height:5px; }
+.mood-scanning .nova-art { filter:drop-shadow(0 0 9px #bde3ce88); }
+.mood-scanning .wheel-a { animation-duration:9s; }
+.mood-scanning .nova-art .nova-eyes i { animation:nova-search 1.4s ease-in-out infinite; }
+.mood-scanning .volt-sparks,.mood-happy .volt-sparks { opacity:1; animation:pulse .4s infinite; }
+.mood-sleeping .nova-art { animation:nova-breathe 4s ease-in-out infinite; }
+.mood-sleeping .nova-art .nova-eyes i { height:2px; opacity:.7; }
+.mood-sleeping .wheel-a,.mood-sleeping .wheel-b { animation-play-state:paused; }
+.mood-recovering .nova-art { animation:nova-recover .6s ease both; }
+.mood-dragging .nova-art { animation:none; }
+.mood-speaking .art-mimo .nova-mouth { animation:nova-talk .35s steps(2) infinite; }
+.nova-exhibit .nova-robot,.design-preview .nova-robot { animation:none; cursor:inherit; }
+.nova-exhibit .nova-robot { pointer-events:none; }
+@keyframes ear-twitch { 0%,80%,100% { transform:rotate(0); } 85% { transform:rotate(-7deg); } 90% { transform:rotate(4deg); } }
+@keyframes tail-sway { 50% { transform:rotate(7deg); } }
+@keyframes celestial-turn { to { transform:rotate(360deg); } }
+@keyframes wing-breathe { 50% { transform:scale(1.025,.98); } }
+@keyframes halo-glow { 50% { opacity:.5; } }
+@keyframes tentacle-sway { 50% { transform:skewX(-7deg) scaleY(.96); } }
+@keyframes satellite-drift { 50% { transform:rotate(7deg); } }
+/* A quiet mode pauses ambient motion. Touch and gaze remain responsive. */
+[data-calm="true"] .nova-art,[data-calm="true"] .nova-art svg *,[data-calm="true"] .nova-shell,[data-calm="true"] .nova-antenna { animation:none; }
+[data-calm="true"] .mood-happy .nova-art,[data-calm="true"] .mood-success .nova-art { animation:nova-hop .6s ease-in-out 1; }
+@media(prefers-reduced-motion:reduce) {
+  .nova-art,.nova-art svg *,.nova-art .nova-eyes i,.nova-shell,.nova-antenna,.exhibit-orbit { animation:none!important; }
+}

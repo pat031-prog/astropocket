@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#06050c"><title>AstroPocket // Nova · Microinteracciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./nova-lab.css">
+</head>
+<body>
+  <header class="masthead"><a class="wordmark" href="/">ASTRO<span>PKT</span></a><span class="masthead-sub">POCKET GUIDE / INTERACTION STUDY 01</span><a class="back" href="/">↗ CONSOLA ORIGINAL</a></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">EL BICHO COMO PROTAGONISTA</p><h1>NOVA <span>生きている</span></h1><p>Tocalo. Señalá un planeta. Escribí. Dejalo esperar.</p></div><label class="audio-switch"><input id="audio" type="checkbox"> SONIDO <span id="audio-label">OFF</span></label></div>
+    <div class="instrument">
+      <section class="stage-column" aria-label="Escenario de Nova">
+        <div class="module-title"><span>UNIT-09 / POCKET GUIDE</span><span class="live-dot">ENSAYO LOCAL</span></div>
+        <div class="stage" id="stage">
+          <div class="cross top-left">+</div><div class="cross top-right">+</div><div class="cross bottom-left">+</div><div class="cross bottom-right">+</div>
+          <div class="orbit-ring ring-one"></div><div class="orbit-ring ring-two"></div>
+          <button class="planet moon" data-planet="Luna" aria-label="Señalar la Luna"><span>☽</span><small>LUNA</small></button>
+          <button class="planet saturn" data-planet="Saturno" aria-label="Señalar Saturno"><span>♄</span><small>SATURNO</small></button>
+          <button class="planet venus" data-planet="Venus" aria-label="Señalar Venus"><span>♀</span><small>VENUS</small></button>
+          <div class="nova-position" id="nova-position">
+            <div class="speech" id="speech" role="status">¿Qué trama el cosmos?</div>
+            <span class="sleep-symbol" aria-hidden="true">z z Z</span>
+            <button class="nova-hit" id="nova-hit" aria-label="Acariciar o arrastrar a Nova">
+              <span class="nova-body" id="nova-body" data-state="idle"><span class="antenna left"></span><span class="antenna right"></span><span class="scanlines"></span><span class="face" id="face"><i class="eye left"></i><i class="eye right"></i></span><span class="mouth"></span><span class="leds"><i></i><i></i><i></i></span></span>
+            </button>
+            <div class="shadow"></div><span class="unit-tag">NOVA // UNIT-09</span>
+          </div>
+          <div class="stage-hint">TOCÁ PARA INTERACTUAR · ARRASTRÁ PARA MOVER</div>
+        </div>
+        <form class="signal-form" id="signal-form"><label for="signal-input">TRANSMISIÓN <span>↘ observá cómo escucha</span></label><div class="input-line"><span>&gt;_</span><input id="signal-input" maxlength="160" placeholder="Escribí algo para Nova…" autocomplete="off"><button type="submit" aria-label="Enviar señal local">↵</button></div></form>
+        <p class="local-note">Ensayo de gestos y tiempos. Las señales se procesan en esta página.</p>
+      </section>
+      <aside class="control-column"><div class="module-title"><span>BEHAVIOR / LIVE</span><span class="little-square"></span></div><div class="state-display"><span>ESTADO ACTUAL</span><output id="state-output">EN ESPERA</output><p id="state-description">Respira, parpadea y registra el entorno.</p></div>
+        <div class="actions" aria-label="Probar comportamientos">
+          <button data-action="pet"><span>01</span><strong>Acariciar</strong><small>toque → anticipación → gesto</small><b>↗</b></button>
+          <button data-action="scan"><span>02</span><strong>Leer una señal</strong><small>atención → esfuerzo → alivio</small><b>↗</b></button>
+          <button data-action="surprise"><span>03</span><strong>Sorprender</strong><small>sobresalto → recuperación</small><b>↗</b></button>
+          <button data-action="sleep"><span>04</span><strong>Dejar descansar</strong><small>sueño → tocar para despertar</small><b>↗</b></button>
+        </div>
+        <div class="event-log"><span>ÚLTIMOS GESTOS</span><ol id="event-log"><li><time>00:00</time> UNIT-09 conectado.</li></ol></div><p class="principle">La personalidad también está en lo que hace mientras espera.</p>
+      </aside>
+    </div>
+    <section class="research" aria-labelledby="research-title"><div class="research-heading"><div><p class="eyebrow">REPOS ABIERTOS EXPLORADOS</p><h2 id="research-title">De dónde tomar ideas.</h2></div><p>Consola + criatura + respuesta al contacto.<br>El personaje y su identidad siguen siendo de AstroPocket.</p></div>
+      <div class="references">
+        <article><span class="reference-number">01 / MATERIALIDAD</span><h3><a href="https://github.com/Imetomi/retro-futuristic-ui-design" target="_blank" rel="noreferrer">Retro-Futuristic UI Gallery ↗</a></h3><p>Consola como objeto: cristal, fósforo, carcasa y controles. Su CRT en React es la referencia visual más cercana.</p><a class="reference-preview" href="https://github.com/Imetomi/retro-futuristic-ui-design" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/Imetomi/retro-futuristic-ui-design/main/images/terminal.png" alt="Terminal CRT ámbar del repositorio de Imetomi" loading="lazy"></a><small>React · MIT · Referencia externa del autor</small></article>
+        <article><span class="reference-number">02 / INSTRUMENTACIÓN</span><h3><a href="https://github.com/GitSquared/edex-ui" target="_blank" rel="noreferrer">eDEX-UI ↗</a></h3><p>Paneles que responden, telemetría y terminal central. En AstroPocket, esa actividad puede salir de posiciones y tránsitos reales.</p><a class="source-link" href="https://github.com/GitSquared/edex-ui#screenshots" target="_blank" rel="noreferrer">VER CAPTURAS DEL REPO →</a><small>Electron · GPL-3.0 · Archivado</small><h3 class="secondary-title"><a href="https://github.com/Swordfish90/cool-retro-term" target="_blank" rel="noreferrer">cool-retro-term ↗</a></h3><p>Estudiar la persistencia del fósforo, brillo y textura de pantalla. Ajustar la intensidad para seguir leyendo cómodo.</p><small>Qt/QML · Referencia de material y movimiento</small></article>
+        <article><span class="reference-number">03 / VIDA PROPIA</span><h3><a href="https://github.com/adryd325/oneko.js" target="_blank" rel="noreferrer">oneko.js ↗</a></h3><p>Una criatura pequeña comunica intención con pocos estados: mira, se acerca, espera, se distrae y duerme.</p><small>JavaScript · MIT · Código de estados revisado</small><h3 class="secondary-title"><a href="https://github.com/cixiangtao/sprite-pet" target="_blank" rel="noreferrer">sprite-pet ↗</a></h3><p>Separa los eventos —tocar, arrastrar, dormir— de los cuadros de animación. Una referencia técnica para ampliar el bicho original.</p><small>TypeScript · Código MIT · Proyecto exploratorio</small></article>
+        <article><span class="reference-number">04 / LÓGICA DE JUEGO</span><h3><a href="https://github.com/Tuxemon/Tuxemon" target="_blank" rel="noreferrer">Tuxemon ↗</a></h3><p>Referencia abierta de RPG de criaturas: diálogos, encuentros e interacción con personajes. Para estudiar el ritmo de una respuesta y la continuidad entre acciones.</p><small>Python/Pygame · Referencia de interacción</small><h3 class="secondary-title"><a href="https://github.com/clippyjs/clippy.js" target="_blank" rel="noreferrer">Clippy.js ↗</a></h3><p>Gestos que señalan un lugar, animaciones en cola y retorno al reposo. Nova puede dirigir la mirada a un planeta y acompañar la consulta.</p><small>JavaScript · Referencia de gestos; conservar a Nova</small></article>
+      </div>
+    </section>
+    <footer><span>ASTROPOCKET / LAB 01</span><span>Original conservado. Ensayo separado.</span><a href="/">VOLVER A LA CONSOLA ↗</a></footer>
+  </main>
+  <script src="./nova-lab.js"></script>
+</body>
+</html>
