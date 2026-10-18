@@ -5,7 +5,7 @@ import { createHash } from "node:crypto";
 import { ToolLoopAgent, isStepCount, tool, streamText } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { z } from "zod";
-import { BODIES, validDate } from "../services/astronomyService.js";
+import { BODIES, validDate } from "../services/astroMath.js";
 import { ENGINE, searchTransits, snapshot } from "./ephemeris.js";
 import { birthSchema, calculateNatal, findPlaces } from "./natal.js";
 import { relayReading } from "./readingStream.js";

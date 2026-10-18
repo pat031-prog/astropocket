@@ -5,9 +5,9 @@ import { createHash } from "node:crypto";
 import {
   BODIES,
   calculateAspects,
-  searchTransits as findCrossings,
+  searchContacts as findCrossings,
   validDate,
-} from "../services/astronomyService.js";
+} from "../services/astroMath.js";
 import { SIGNS } from "../services/astroDisplay.js";
 import type { NatalChart, TransitPlanet } from "../types";
 

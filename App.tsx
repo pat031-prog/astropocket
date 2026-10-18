@@ -16,7 +16,7 @@ import {
   planetName,
   signIndex,
 } from "./services/astroDisplay";
-import { validDate } from "./services/astronomyService";
+import { validDate } from "./services/astroMath";
 import {
   converse,
   getConnection,

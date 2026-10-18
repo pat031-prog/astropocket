@@ -4,7 +4,7 @@ import path from "node:path";
 import { z } from "zod";
 import { houseOf, Body } from "@kuntay/swisseph";
 import { getEphemeris, housesAt, snapshot, ENGINE } from "./ephemeris.js";
-import { validDate } from "../services/astronomyService.js";
+import { validDate } from "../services/astroMath.js";
 import { SIGNS } from "../services/astroDisplay.js";
 import type { BirthPlace, NatalChart, NatalProfile } from "../types";
 
