@@ -22,6 +22,7 @@ export const birthSchema = z.object({
   }),
   timeZone: z.string().min(1).max(80),
   houseSystem: z.enum(["P", "W", "E"]),
+  nodeType: z.enum(["mean", "true"]).optional(),
 });
 let cities:
   | Promise<(BirthPlace & { population: number; search: string })[]>
@@ -108,7 +109,7 @@ export async function calculateNatal(
       planet.isRetrograde,
     ),
   );
-  const node = swe.calc(date.getTime() / 86400000 + 2440587.5, Body.TrueNode);
+  const node = swe.calc(date.getTime() / 86400000 + 2440587.5, input.nodeType === "mean" ? Body.MeanNode : Body.TrueNode);
   add("NodoN", node.longitude, node.longitudeSpeed < 0);
   if (houses) {
     add("Asc", houses.ascendant, false, false);

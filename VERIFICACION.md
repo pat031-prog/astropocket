@@ -23,3 +23,12 @@ Demo pública: https://astropocket.vercel.app . Código: https://github.com/pat0
 - Escaneo de fuente y build sin claves reales ni el perfil personal anterior. `.env.local`, respaldos privados, capturas, audios de prueba, ZIP y configuración local de Vercel quedan ignorados. La carta y el historial existentes de la consola local se conservan en su origen.
 
 Evidencia local, excluida de Git: `artifacts/astropocket-publicado-novas.png`, `astropocket-voz-publicada.png`, `astropocket-mobile-taller.png`, `astropocket-demo-entrada.png`, `mail-link-enviado.png` y muestras WAV de ambas voces. El motor puede emitir una advertencia de ONNX Runtime sobre un identificador de telemetría que no puede persistir en el sistema de archivos de Vercel; las respuestas de audio comprobadas fueron correctas.
+
+## Revisión móvil posterior
+
+- `npm test`: 30 pruebas aprobadas. Se agregaron traslado de nacimiento sin credenciales/historial, rechazo de enlaces inválidos y selección explícita entre nodo medio y verdadero, conservando el resultado de cartas antiguas.
+- `npm run build`: TypeScript y Vite aprobados; JS principal 474,60 kB / 149,26 kB gzip. La validación del enlace no agrega una biblioteca al cliente.
+- Chrome, viewport aproximado de 414×736: selección de los tres temas mediante tarjetas y radios, sin desborde horizontal. Con altura de 450 px, compositor visible dentro de los límites y texto de entrada de 16 px. También se seleccionó tema en horizontal, aproximadamente 896×414. Son pruebas de dimensiones en escritorio; no sustituyen probar Safari en un iPhone físico ni su teclado real.
+- Se contrastó una carta solicitada por su titular con la calculadora de Astro-Seek: diez planetas, nodo medio, Ascendente, Medio Cielo y once casas planetarias coincidieron al minuto mostrado. Se usaron las mismas coordenadas de ciudad redondeadas al minuto de arco y Placidus. Los datos y la evidencia del caso personal se excluyen de Git y del despliegue.
+- El enlace con nacimiento precargado abre el formulario incluso cuando Carta está oculto en móvil. Calcular guarda las posiciones, elimina el fragmento de la barra y conserva mensajes. El enlace se puede copiar desde Carta para otro dispositivo; no es sincronización automática.
+- Cambios de interfaz revisados por accesibilidad, dependencias de hooks y limpieza de listeners/RAF; no se bloquea el zoom manual.

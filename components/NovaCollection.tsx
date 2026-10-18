@@ -57,11 +57,12 @@ export default function NovaCollection({ current, onChoose, dialog, appearance, 
           </div>
         </div> : panel === "theme" ? <>
           <div className="appearance-intro"><span>CAMBIÁ DE ATMÓSFERA</span><h2>Tu pequeña estación.</h2><p>Probá un tema. Cambian los paneles, las cartas y la conversación.</p></div>
-          <div className="theme-options">
-            {THEMES.map(theme => <button key={theme.id} className={`theme-card preview-${theme.id}`} aria-pressed={appearance.theme === theme.id} onClick={() => onAppearance({ ...appearance, theme: theme.id })}>
+          <div className="theme-options" role="radiogroup" aria-label="Tema de la consola">
+            {THEMES.map(theme => <label key={theme.id} className={`theme-card preview-${theme.id}`} data-selected={appearance.theme === theme.id}>
+              <input type="radio" name="console-theme" aria-label={theme.name} checked={appearance.theme === theme.id} onChange={() => onAppearance({ ...appearance, theme: theme.id })} />
               <span className="theme-mini" aria-hidden="true"><span className="mini-top">✳ ASTROPOCKET<i /><i /><i /></span><span className="mini-layout"><span className="mini-wheel">☉</span><span className="mini-chat"><i /><i /><i /><span>Hablemos del cielo… ↵</span></span></span></span>
               <span className="theme-info"><span>{theme.label}</span><strong>{theme.name}<b>{appearance.theme === theme.id ? "✓" : "↗"}</b></strong><small>{theme.note}</small><span className="theme-swatches">{theme.colors.map(color => <i key={color} style={{background:color}} />)}<span>{appearance.theme === theme.id ? "EN USO" : "PROBAR TEMA"}</span></span></span>
-            </button>)}
+            </label>)}
           </div>
         </> : <>
           <div className="appearance-intro"><span>HACÉ LUGAR PARA LEER</span><h2>A tu ritmo.</h2><p>El texto y el movimiento también son parte de la experiencia.</p></div>
@@ -73,7 +74,7 @@ export default function NovaCollection({ current, onChoose, dialog, appearance, 
           <VoiceSettings />
         </>}
       </div>
-      <div className="appearance-footer"><span aria-live="polite">{chosen.name} + {THEMES.find(t => t.id === appearance.theme)?.name}<small>Guardado en esta PC</small></span><button className="appearance-done" onClick={() => dialog.current?.close()}>Listo, a charlar <span>↗</span></button></div>
+      <div className="appearance-footer"><span aria-live="polite">{chosen.name} + {THEMES.find(t => t.id === appearance.theme)?.name}<small>Guardado en este navegador</small></span><button className="appearance-done" onClick={() => dialog.current?.close()}>Listo, a charlar <span>↗</span></button></div>
     </dialog>
   );
 }

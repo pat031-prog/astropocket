@@ -21,6 +21,7 @@ export interface NatalProfile {
     place: BirthPlace;
     timeZone: string;
     houseSystem: "P" | "W" | "E";
+    nodeType?: "mean" | "true";
   };
   instant: string;
   cusps: number[] | null;

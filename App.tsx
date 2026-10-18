@@ -36,11 +36,13 @@ import NovaCollection from "./components/NovaCollection";
 import SessionGate from "./components/SessionGate";
 import { NOVAS, type NovaDesign } from "./components/NovaShell";
 import { restoreAppearance, type AppearancePanel } from "./services/appearance";
+import useMobileViewport from "./hooks/useMobileViewport";
 import "./index.css";
 import "./styles/experience.css";
 import "./styles/wardrobe.css";
 import "./styles/themes.css";
 import "./styles/session.css";
+import "./styles/mobile.css";
 
 const STORAGE = "astropocket.console.v2";
 function isDate(value: unknown): value is string {
@@ -171,6 +173,7 @@ function restore() {
   }
 }
 export default function App() {
+  useMobileViewport();
   return <SessionGate><AstroConsole /></SessionGate>;
 }
 function AstroConsole() {
@@ -472,6 +475,7 @@ function AstroConsole() {
             ? {
                 natalContext: {
                   houseSystem: natalProfile.birth.houseSystem,
+                  nodeType: natalProfile.birth.nodeType || "true",
                   cusps: natalProfile.cusps,
                   warning: natalProfile.warning,
                 },

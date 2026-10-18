@@ -67,6 +67,7 @@ export async function converse(
     natal: NatalChart;
     natalContext?: {
       houseSystem: "P" | "W" | "E";
+      nodeType?: "mean" | "true";
       cusps: number[] | null;
       warning?: string;
     };

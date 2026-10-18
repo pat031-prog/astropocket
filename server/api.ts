@@ -66,6 +66,7 @@ const chatSchema = z.object({
   natalContext: z
     .object({
       houseSystem: z.enum(["P", "W", "E"]),
+      nodeType: z.enum(["mean", "true"]).optional(),
       cusps: z.array(z.number().min(0).lt(360)).length(12).nullable(),
       warning: z.string().max(500).optional(),
     })

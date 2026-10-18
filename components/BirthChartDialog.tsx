@@ -4,24 +4,28 @@ import type { BirthPlace, NatalChart, NatalProfile } from "../types";
 export default function BirthChartDialog({
   dialog,
   profile,
+  initialBirth,
   onCalculated,
 }: {
   dialog: React.RefObject<HTMLDialogElement>;
   profile?: NatalProfile | null;
+  initialBirth?: NatalProfile["birth"] | null;
   onCalculated: (natal: NatalChart, profile: NatalProfile) => void;
 }) {
-  const [date, setDate] = useState(profile?.birth.date || "");
-  const [time, setTime] = useState(profile?.birth.time || "");
-  const [known, setKnown] = useState(profile?.birth.timeKnown ?? true);
-  const [query, setQuery] = useState(profile?.birth.place.name || "");
+  const birth = initialBirth || profile?.birth;
+  const [date, setDate] = useState(birth?.date || "");
+  const [time, setTime] = useState(birth?.time || "");
+  const [known, setKnown] = useState(birth?.timeKnown ?? true);
+  const [query, setQuery] = useState(birth?.place.name || "");
   const [place, setPlace] = useState<BirthPlace | null>(
-    profile?.birth.place || null,
+    birth?.place || null,
   );
   const [places, setPlaces] = useState<BirthPlace[]>([]);
-  const [zone, setZone] = useState(profile?.birth.timeZone || "");
+  const [zone, setZone] = useState(birth?.timeZone || "");
   const [system, setSystem] = useState<"P" | "W" | "E">(
-    profile?.birth.houseSystem || "P",
+    birth?.houseSystem || "P",
   );
+  const [nodeType, setNodeType] = useState<"mean" | "true">(birth ? birth.nodeType || "true" : "mean");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [manual, setManual] = useState(false);
@@ -92,6 +96,7 @@ export default function BirthChartDialog({
           place: finalPlace,
           timeZone: zone,
           houseSystem: system,
+          nodeType,
         }),
       });
       const result = await response.json();
@@ -126,8 +131,9 @@ export default function BirthChartDialog({
           <h2>El cielo cuando llegaste.</h2>
           <p>
             Calculamos los planetas, el Ascendente y las casas con tu fecha,
-            hora y lugar. Los datos quedan en esta PC.
+            hora y lugar. Los datos quedan en este navegador.
           </p>
+          {initialBirth && <p className="birth-import-note">Tu nacimiento vino en el enlace. Revisalo y tocá «Calcular y usar esta carta» para cargarlo en este dispositivo. La conversación se conserva.</p>}
           <div className="birth-row">
             <label>
               FECHA DE NACIMIENTO
@@ -243,6 +249,12 @@ export default function BirthChartDialog({
           </label>
           <details className="birth-advanced">
             <summary>Ajustes de hora y ubicación</summary>
+            <label>NODO NORTE
+              <select aria-label="Tipo de nodo norte" value={nodeType} onChange={event => setNodeType(event.target.value as "mean" | "true")}>
+                <option value="mean">Nodo medio · predeterminado de Astro-Seek</option>
+                <option value="true">Nodo verdadero</option>
+              </select>
+            </label>
             <label>
               ZONA HORARIA O DESFASE UTC
               <input

@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import type { NatalChart, NatalProfile } from "../types";
 import { PLANET_GLYPHS } from "../constants";
 import { formatDegree, planetName, SIGNS } from "../services/astroDisplay";
 import AstroWheel from "./AstroWheel";
 import BirthChartDialog from "./BirthChartDialog";
+import { makeBirthLink, readBirthLink } from "../services/birthLink";
 
 export default function Soulfile({
   natal,
@@ -26,8 +27,18 @@ export default function Soulfile({
   const [view, setView] = useState<"wheel" | "positions">("wheel");
   const [draft, setDraft] = useState(natal);
   const [draftName, setDraftName] = useState(name);
+  const [imported] = useState(() => {
+    try { return { birth: readBirthLink(window.location.hash), error: "" }; }
+    catch (error) { return { birth: null, error: error instanceof Error ? error.message : "Enlace inválido." }; }
+  });
+  const [importDone, setImportDone] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const personalLink = profile ? makeBirthLink(window.location.href, profile.birth) : "";
+  useEffect(() => {
+    if (imported.birth) birthDialog.current?.showModal();
+  }, [imported]);
   return (
-    <aside className="console-panel soul-panel">
+    <><aside className="console-panel soul-panel">
       <div className="module-heading">
         <span>01 / SOULFILE</span>
         <span>◈ NATAL</span>
@@ -140,12 +151,13 @@ export default function Soulfile({
         ))}
       </div>
       <div className="soul-note">
+        {imported.error && <p role="alert">{imported.error}</p>}
         <span>
           {example ? "EJEMPLO / 01.01.2000 / BUENOS AIRES" : profile ? "MAPA CALCULADO / TROPICAL" : "ARCHIVO DE ORIGEN / V9.6"}
         </span>
         <p>
           {example ? "Este mapa es una muestra. Cargá tu nacimiento para que los tránsitos y las lecturas se refieran a tu carta." : profile
-            ? `${profile.birth.place.name} · ${profile.birth.date} · ${profile.birth.timeKnown ? profile.birth.time : "hora desconocida"} · ${profile.birth.timeZone}. ${profile.warning || "Casas " + { P: "Placidus", W: "por signos enteros", E: "iguales" }[profile.birth.houseSystem] + "."}`
+            ? `${profile.birth.place.name} · ${profile.birth.date} · ${profile.birth.timeKnown ? profile.birth.time : "hora desconocida"} · ${profile.birth.timeZone}. ${profile.warning || "Casas " + { P: "Placidus", W: "por signos enteros", E: "iguales" }[profile.birth.houseSystem] + "."} Nodo ${profile.birth.nodeType === "mean" ? "medio" : "verdadero"}.`
             : "Estas posiciones venían del proyecto original. Calculá tu carta con nacimiento o verificá los grados con Astro-Seek."}
         </p>
         <a
@@ -155,6 +167,15 @@ export default function Soulfile({
         >
           ABRIR ASTRO-SEEK ↗
         </a>
+        {profile && <details className="chart-transfer">
+          <summary>Llevar mi carta a otro dispositivo ↗</summary>
+          <p>Este enlace contiene tu fecha, hora y lugar. Abrilo en tu celular para cargar la misma carta. No incluye tu clave ni tus conversaciones.</p>
+          <input aria-label="Enlace personal de mi carta" readOnly value={personalLink} onFocus={event => event.target.select()} />
+          <button onClick={async () => {
+            try { await navigator.clipboard.writeText(personalLink); setCopied(true); }
+            catch { setCopied(false); }
+          }}>{copied ? "✓ Enlace copiado" : "Copiar enlace de mi carta"}</button>
+        </details>}
       </div>
       <div className="module-foot">
         <span>ZODÍACO TROPICAL</span>
@@ -247,11 +268,6 @@ export default function Soulfile({
           </div>
         </form>
       </dialog>
-      <BirthChartDialog
-        dialog={birthDialog}
-        profile={profile}
-        onCalculated={(chart, nextProfile) => onSave(name, chart, nextProfile)}
-      />
       <dialog ref={chartDialog} className="console-dialog chart-dialog">
         <div className="module-heading">
           <span>LA CARTA DE {name.toUpperCase()}</span>
@@ -290,5 +306,16 @@ export default function Soulfile({
         </div>
       </dialog>
     </aside>
+      <BirthChartDialog
+        dialog={birthDialog}
+        profile={profile}
+        initialBirth={!importDone ? imported.birth : null}
+        onCalculated={(chart, nextProfile) => {
+          onSave(name, chart, nextProfile);
+          setImportDone(true);
+          if (window.location.hash.startsWith("#carta=")) history.replaceState(history.state, "", window.location.pathname + window.location.search);
+        }}
+      />
+    </>
   );
 }

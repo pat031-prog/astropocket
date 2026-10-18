@@ -38,6 +38,15 @@ test("sin hora no inventa Ascendente, Medio Cielo ni casas", async () => {
   assert.equal(result.natal.MC, undefined);
   assert.match(result.profile.warning!, /Hora desconocida/);
 });
+test("nodo medio y verdadero se calculan explícitamente; las cartas antiguas conservan el verdadero", async () => {
+  const original = await calculateNatal(birth);
+  const mean = await calculateNatal({ ...birth, nodeType: "mean" });
+  const trueNode = await calculateNatal({ ...birth, nodeType: "true" });
+  assert.equal(original.natal.NodoN.deg, trueNode.natal.NodoN.deg);
+  assert.notEqual(mean.natal.NodoN.deg, trueNode.natal.NodoN.deg);
+  assert.deepEqual(mean.natal.Sol, original.natal.Sol);
+  assert.equal(mean.profile.birth.nodeType, "mean");
+});
 test("las horas inexistentes y ambiguas requieren corrección explícita", async () => {
   for (const [date, time] of [
     ["2026-03-08", "02:30"],
