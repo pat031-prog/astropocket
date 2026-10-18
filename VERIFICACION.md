@@ -1,6 +1,6 @@
 # Verificación de AstroPocket — 18/10/2026
 
-Demo pública: https://astropocket.vercel.app . Código: https://github.com/pat031-prog/astropocket . Publicación AGPL-3.0 o posterior autorizada por el titular. Código de la versión alojada: `2fcd382`; despliegue `dpl_3xDNSmuWWXrn4j7fhyux2jZYfqPn`, promovido al dominio de producción.
+Demo pública: https://astropocket.vercel.app . Código: https://github.com/pat031-prog/astropocket . Publicación AGPL-3.0 o posterior autorizada por el titular. Código de la versión alojada: `debcc35`; despliegue `dpl_23BHQhiBnQc2PZKCTdGFvjaRuVFs`, promovido al dominio de producción. El flujo de voz y la conversación anual descritos abajo se verificaron en la publicación anterior; esta revisión volvió a comprobar carta, conexión, conversación breve y temas.
 
 ## Flujo comprobado en Vercel
 
@@ -32,3 +32,4 @@ Evidencia local, excluida de Git: `artifacts/astropocket-publicado-novas.png`, `
 - Se contrastó una carta solicitada por su titular con la calculadora de Astro-Seek: diez planetas, nodo medio, Ascendente, Medio Cielo y once casas planetarias coincidieron al minuto mostrado. Se usaron las mismas coordenadas de ciudad redondeadas al minuto de arco y Placidus. Los datos y la evidencia del caso personal se excluyen de Git y del despliegue.
 - El enlace con nacimiento precargado abre el formulario incluso cuando Carta está oculto en móvil. Calcular guarda las posiciones, elimina el fragmento de la barra y conserva mensajes. El enlace se puede copiar desde Carta para otro dispositivo; no es sincronización automática.
 - Cambios de interfaz revisados por accesibilidad, dependencias de hooks y limpieza de listeners/RAF; no se bloquea el zoom manual.
+- Publicación comprobada: dominio público 200 con los nuevos assets; nacimiento desde enlace personal calculado con Swiss, trece posiciones visibles y nodo medio; respuesta real de Nova completada con Sol/Luna/Ascendente. Temas Nebulosa, Jardín LCD y Observatorio seleccionados tocando las tarjetas. Viewport de producción 414×736, diálogo de 396 px dentro de la pantalla y sin desborde; a 414×450 el campo de texto termina en y=431 y sigue visible. Captura local: `artifacts/astropocket-temas-iphone-publicado.png`.
