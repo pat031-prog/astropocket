@@ -5,10 +5,10 @@ import { createHash } from "node:crypto";
 import { ToolLoopAgent, isStepCount, tool, streamText } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { z } from "zod";
-import { BODIES, validDate } from "../services/astronomyService";
-import { ENGINE, searchTransits, snapshot } from "./ephemeris";
-import { birthSchema, calculateNatal, findPlaces } from "./natal";
-import { relayReading } from "./readingStream";
+import { BODIES, validDate } from "../services/astronomyService.js";
+import { ENGINE, searchTransits, snapshot } from "./ephemeris.js";
+import { birthSchema, calculateNatal, findPlaces } from "./natal.js";
+import { relayReading } from "./readingStream.js";
 import type { NatalChart, TraditionMode } from "../types";
 
 const DEFAULT_MODEL = "claude-sonnet-5-5";
@@ -281,7 +281,7 @@ export function createApiMiddleware(root: string, options: ApiOptions = {}) {
         if(voiceActive>=2){json(response,429,{error:"La voz está ocupada. Probá en un momento."});return true;}
         voiceActive++;
         try {
-          const {synthesize}=await import("./voice");
+          const {synthesize}=await import("./voice.js");
           const audio=await synthesize(body.text,body.voice);
           if(!response.destroyed){response.writeHead(200,{"Content-Type":"audio/wav","Cache-Control":"no-store","Content-Length":audio.length});response.end(audio);}
         } catch(error) {

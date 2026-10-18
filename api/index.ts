@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { createApiMiddleware } from "../server/api";
+import { createApiMiddleware } from "../server/api.js";
 const handle=createApiMiddleware(process.cwd(),{remote:true});
 export default async function handler(request:IncomingMessage,response:ServerResponse) {
   const url=new URL(request.url||"/","https://astropocket.local");

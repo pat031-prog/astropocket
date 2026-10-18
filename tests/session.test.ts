@@ -25,6 +25,10 @@ test("el modo público nunca usa la clave del dueño y valida por visitante",asy
     assert.equal((await fetch(base+"/api/config",{method:"POST"})).status,405);
     const body={messages:[{role:"user",content:"Hola"}],natal:{Sol:{sign:"Aries",deg:0}},profileName:"Demo",date:"2026-10-18T12:00:00-03:00",mode:"MODERN"};
     assert.equal((await fetch(base+"/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})).status,401);
+    const voice=(key?:string,text="Hola")=>fetch(base+"/api/voice",{method:"POST",headers:{"Content-Type":"application/json",...(key?{"x-astropocket-key":key}:{})},body:JSON.stringify({text,voice:"ef_dora"})});
+    assert.equal((await voice()).status,401);
+    assert.equal((await voice("sk-ant-rejected-visitor-key")).status,401);
+    assert.equal((await voice("sk-ant-first-visitor-key","x".repeat(241))).status,400);
     assert.equal((await fetch(base+"/api/status",{headers:{Origin:"https://external.example"}})).status,403);
     assert.ok(!JSON.stringify(state).includes("sk-ant-"));
   } finally {await new Promise<void>(r=>server.close(()=>r()));}

@@ -6,8 +6,8 @@ import {
   TransitPlanet,
   TransitSearch,
 } from "../types";
-import { ZODIAC_SIGNS } from "../constants";
-import { signIndex } from "./astroDisplay";
+import { ZODIAC_SIGNS } from "../constants.js";
+import { signIndex } from "./astroDisplay.js";
 
 export const ENGINE = {
   name: "Astronomy Engine",

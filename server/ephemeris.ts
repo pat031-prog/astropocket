@@ -7,8 +7,8 @@ import {
   calculateAspects,
   searchTransits as findCrossings,
   validDate,
-} from "../services/astronomyService";
-import { SIGNS } from "../services/astroDisplay";
+} from "../services/astronomyService.js";
+import { SIGNS } from "../services/astroDisplay.js";
 import type { NatalChart, TransitPlanet } from "../types";
 
 export const ENGINE = {

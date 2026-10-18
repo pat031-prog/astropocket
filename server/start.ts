@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { createApiMiddleware } from "./api";
+import { createApiMiddleware } from "./api.js";
 const root = process.cwd();
 const dist = path.join(root, "dist");
 const api = createApiMiddleware(root);
