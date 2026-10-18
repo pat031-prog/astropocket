@@ -1,5 +1,7 @@
 # AstroPocket
 
+Demo: https://astropocket.vercel.app
+
 Consola personal de astrología con Nova / UNIT-09. Retoma la identidad de la v9.6: terminal violeta y cian, carta natal, instrumental del cielo y el robot original como compañero.
 
 ## Ejecutar en esta PC
@@ -77,4 +79,5 @@ La investigación estética y de comportamiento está en `IDENTIDAD-Y-REFERENCIA
 `vercel.json` define el build Vite y una función Node compartida para `/api/*`, con efemérides y ciudades incluidas. `.vercelignore` excluye claves, pruebas, capturas y archivos privados de trabajo. La demo no incluye una clave del dueño: cada visitante conecta Anthropic. Ver `DEPLOY-VERCEL.md`.
 
 AstroPocket se publica bajo **GNU AGPL v3 o posterior**, por decisión del titular del proyecto. El código correspondiente está en [github.com/pat031-prog/astropocket](https://github.com/pat031-prog/astropocket) y se ofrece desde la app. `LICENSE`, `THIRD-PARTY-NOTICES.md` y `FUENTES-Y-LICENCIAS.md` documentan las condiciones y créditos de las dependencias.
+
 

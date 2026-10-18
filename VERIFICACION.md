@@ -1,19 +1,25 @@
-# Verificación de AstroPocket — 17/10/2026
+# Verificación de AstroPocket — 18/10/2026
 
-Historia verificada: escribir a Nova → API local → Claude con herramientas de cálculo → lectura transmitida y resultados en el cronoscopio. Las pruebas de esta revisión se hicieron en otra instancia local para conservar el historial y las posiciones natales del usuario.
+Demo pública: https://astropocket.vercel.app . Código: https://github.com/pat031-prog/astropocket . Publicación AGPL-3.0 o posterior autorizada por el titular. Código de la versión alojada: `2fcd382`; despliegue `dpl_3xDNSmuWWXrn4j7fhyux2jZYfqPn`, promovido al dominio de producción.
 
-- `npm test`: 18 pruebas aprobadas, sin llamadas pagas. Incluyen geometría de aspectos, búsqueda de contactos, Swiss Ephemeris, horario histórico, hora desconocida y búsqueda local de ciudades.
-- `npm run build`: TypeScript y Vite aprobados. Bundle principal de 442 kB (138 kB gzip).
-- Dos conversaciones reales con Claude: lectura actual y exploración del 15/01/2027 con una carta natal calculada de ejemplo. `skyAtDate` ejecutada y casas natales incluidas en el contexto de la segunda lectura.
-- Scroll durante transmisión: permaneció en 3 px mientras el contenido creció de 606 a 2239 px; en la segunda lectura permaneció en 2225 px mientras el contenido creció de 2837 a 3642 px. La pregunta queda anclada; el lector decide cuándo ir al final.
-- Lectura: fuente de 16–17 px, párrafos espaciados, tablas Markdown, metadatos en un desplegable, compositor visible y textarea que crece hasta 144 px. El efecto CRT se conserva en Nova y no se superpone al texto.
-- Vistas de 322×572, 390×844 y 1440×960 comprobadas sin desborde horizontal. Nova se compacta durante la conversación en la ventana pequeña. El tamaño de prueba se restaura al terminar.
-- Nova: doble clic y botón explícito para alternar modo Solo, misma conversación y borrador, colección de cuatro diseños originales, selección de Mimo y microinteracciones conservadas. Las tarjetas de colección mantienen sus retratos grandes también con una charla activa.
-- Natal: formulario completo probado con datos ficticios (01/01/2000, 12:00, Buenos Aires), búsqueda de ciudad local, Ascendente y doce casas calculadas. Sin hora conocida no se inventan Ascendente ni casas. Se rechazan horas locales ambiguas o inexistentes.
-- Motor: Swiss Ephemeris 2.10.03 con archivos locales derivados de DE441, verificaciones SHA256 y rechazo del fallback silencioso a Moshier. UI, conversación y búsqueda usan el mismo motor.
-- Comparación externa reproducible: 60 posiciones de Júpiter a Plutón publicadas en las tablas JPL DE431 de Astro-Seek para los primeros días de los doce meses de 2026 a las 12:00 UT. Diferencia máxima de 0,2083 segundos de arco respecto de sus valores publicados con cuatro decimales. Fixture: `tests/astro-seek-reference.json`. Esto verifica esas posiciones, no todas las funciones de Astro-Seek ni las interpretaciones.
-- Atlas: 34.166 ciudades de GeoNames cities15000, coordenadas y zonas IANA disponibles localmente. Fuente, atribución y huella en `data/geonames/manifest.json`.
-- Credencial: configurada en el servidor y ausente en `dist`; `/.env.local` devuelve 403. La instancia de pruebas no registró errores ni advertencias del navegador después de la recarga.
-- Instancia final: `npm start` en 127.0.0.1:4173, estado configurado y Swiss Ephemeris 2.10.03 activo. `/api/sky` devuelve diez planetas. Conversación original y lente helenística conservadas después de recargar; texto de Nova a 16 px, compositor visible y consola del navegador sin errores. Se cerraron la instancia y las pestañas de pruebas y se restauró el viewport normal.
+## Flujo comprobado en Vercel
 
-Fuentes, atribuciones y condiciones de distribución en `FUENTES-Y-LICENCIAS.md`. Límites de datos y cálculos en `README.md`. Captura actual: `artifacts/astropocket-conversacion.png`.
+- Entrada pública pide una clave del visitante. Clave inválida rechazada; conexión válida aceptada; recargar recupera la conexión sin pedir de nuevo la clave. La carta inicial se identifica como ejemplo. El dueño no aporta una clave compartida.
+- Conversación real desde el navegador: pedido anual sobre la carta de ejemplo → búsqueda con el motor → tres tránsitos con fechas y lectura simbólica completa en el mismo turno. No terminó en una promesa de buscar. El turno dejó de estar ocupado y mostró Escuchar lectura.
+- API real: `/api/status` devolvió JSON, demo activa y conexión sin configurar para una petición anónima. `/api/places` encontró Buenos Aires. Nacimiento ficticio 01/01/2000 a las 12:00: doce casas, Sol en Capricornio. `/api/sky`: diez planetas con Swiss Ephemeris. `/.env.local`: 404.
+- Voz neuronal de Kokoro desde la función: Dora devolvió WAV válido de 129.644 bytes en 11,392 s en la primera prueba alojada; Alex, 146.444 bytes en 9,263 s. Son mediciones de esas frases y ese momento, no una garantía de latencia. Las lecturas largas se sintetizan por frases y pueden esperar entre segmentos.
+- Navegador: lectura en voz avanzó al 17%; pausar cambió a Lectura en pausa; reanudar a Nova en voz; detener retiró el reproductor. No se usa la voz robótica de SpeechSynthesis. El texto seleccionado se envía a AstroPocket para sintetizarlo, sin otro proveedor de audio.
+- Escritorio 1280×720: altura total 720 px, sin desborde horizontal, compositor dentro de la pantalla. Teléfono 390×844: ancho 390 px y compositor visible. Taller a 322×572: diálogo de 304 px sin desborde. Se restauró el tamaño normal.
+- Cinco formas: Nova original, Mimo (Tamagotchi), Volt (Pokémon), Seraf (ángel bíblico) y Nulo. Tres temas: Nebulosa, Jardín LCD y Observatorio. El taller permite probar sin cerrarse en cada selección. Modo sólo Nova activado y vuelto a consola en producción.
+- El dominio de producción es público; los enlaces generados de despliegue conservan la protección estándar de Vercel. No se desactivó la protección del proyecto.
+- Mail enviado desde Chrome/Gmail a la dirección indicada por el usuario con el dominio público y el código. Gmail confirmó Se envió el mensaje; se abrió el mensaje enviado.
+
+## Comprobaciones reproducibles
+
+- `npm test`: 26 pruebas aprobadas. Geometría, retrogradación, efemérides Swiss, fecha y hora histórica, hora desconocida, atlas, cierre real tras herramientas, cancelación, aislamiento de claves por visitante, bóveda cifrada y limpieza de texto para voz. Sin llamadas pagas en los tests.
+- `npm run build`: TypeScript y Vite aprobados. JS principal 470,00 kB, 147,67 kB gzip. Compilación ESM nativa de la API comprobada además de la prueba alojada.
+- 60 posiciones de Júpiter a Plutón, primeros días de cada mes de 2026 a las 12:00 UT, contrastadas con tablas DE431 de Astro-Seek. Diferencia máxima: 0,2083 segundos de arco respecto de sus cifras de cuatro decimales. No certifica otras épocas, casas ni interpretaciones.
+- Swiss Ephemeris 2.10.03 / datos DE441 con hashes SHA-256 y rechazo de fallback silencioso a Moshier. Atlas GeoNames de 34.166 lugares. Datos y fuentes en `FUENTES-Y-LICENCIAS.md`.
+- Escaneo de fuente y build sin claves reales ni el perfil personal anterior. `.env.local`, respaldos privados, capturas, audios de prueba, ZIP y configuración local de Vercel quedan ignorados. La carta y el historial existentes de la consola local se conservan en su origen.
+
+Evidencia local, excluida de Git: `artifacts/astropocket-publicado-novas.png`, `astropocket-voz-publicada.png`, `astropocket-mobile-taller.png`, `astropocket-demo-entrada.png`, `mail-link-enviado.png` y muestras WAV de ambas voces. El motor puede emitir una advertencia de ONNX Runtime sobre un identificador de telemetría que no puede persistir en el sistema de archivos de Vercel; las respuestas de audio comprobadas fueron correctas.
