@@ -9,9 +9,7 @@
     "type-check": "tsc --noEmit",
     "preview": "vite preview",
     "start": "tsx server/start.ts",
-    "test": "tsx --test tests/*.test.ts",
-    "prebuild": "node scripts/prepare-voice.mjs",
-    "predev": "node scripts/prepare-voice.mjs"
+    "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^4.0.82",
@@ -22,7 +20,7 @@
     "ai": "^7.0.143",
     "astronomy-engine": "^2.1.19",
     "ephone": "^1.0.2",
-    "onnxruntime-web": "^1.30.0",
+    "onnxruntime-node": "^1.30.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-markdown": "^10.1.0",

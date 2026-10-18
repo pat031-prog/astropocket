@@ -2,17 +2,17 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
   "buildCommand": "npm run build",
+  "installCommand": "ONNXRUNTIME_NODE_INSTALL=skip npm ci",
   "outputDirectory": "dist",
   "headers": [{ "source": "/(.*)", "headers": [
-    { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
-    { "key": "Cross-Origin-Embedder-Policy", "value": "credentialless" },
     { "key": "X-Content-Type-Options", "value": "nosniff" },
     { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
   ] }],
   "functions": {
     "api/index.ts": {
       "maxDuration": 300,
-      "includeFiles": "{data/geonames/cities.json,node_modules/@kuntay/**}"
+      "includeFiles": "{data/geonames/cities.json,node_modules/@kuntay/**,node_modules/onnxruntime-node/bin/napi-v6/linux/x64/**}",
+      "excludeFiles": "node_modules/onnxruntime-node/bin/napi-v6/{darwin,win32,linux/arm64}/**"
     }
   },
   "rewrites": [{ "source": "/api/:path*", "destination": "/api?path=:path*" }]

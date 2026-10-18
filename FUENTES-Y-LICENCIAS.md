@@ -23,6 +23,7 @@ Nova conserva su forma original en CSS. Mimo es un homenaje visual al dispositiv
 
 ## Voz
 
-[Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), Apache-2.0, voces españolas `ef_dora` y `em_alex`. Exportación ONNX de [onnx-community](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX), revisión fija `1939ad2a8e416c0acfeecc08a694d14ef25f2231`. Pesos públicos descargados a pedido; no se incluyen credenciales ni se envía el texto a Hugging Face. ONNX Runtime Web 1.30.0, MIT, ejecuta la red en WASM.
+[Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), Apache-2.0, voces españolas `ef_dora` y `em_alex`. Exportación ONNX de [onnx-community](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX), revisión fija `1939ad2a8e416c0acfeecc08a694d14ef25f2231`. Pesos públicos descargados a pedido; no se incluyen credenciales ni se envía el texto a Hugging Face. ONNX Runtime Node 1.30.0, MIT, ejecuta la red en el servidor. El texto seleccionado viaja a AstroPocket para sintetizarse y no se guarda como archivo.
 
 [ephone 1.0.2](https://github.com/sjmik/ephone-js), GPL-3.0 o posterior, deriva de [eSpeak NG](https://github.com/espeak-ng/espeak-ng). Se usa el paquete de idiomas romances y `es-419` para producir fonemas; el sonido audible lo genera Kokoro. Fuente y scripts de construcción del fonemizador en el repositorio citado. Los avisos se conservan en `licenses/`.
+

@@ -1,6 +1,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { ToolLoopAgent, isStepCount, tool, streamText } from "ai";
 import { createAnthropic } from "@ai-sdk/anthropic";
 import { z } from "zod";
@@ -11,6 +12,8 @@ import { relayReading } from "./readingStream";
 import type { NatalChart, TraditionMode } from "../types";
 
 const DEFAULT_MODEL = "claude-sonnet-5-5";
+const verifiedVoiceKeys=new Map<string,number>();
+let voiceActive=0;
 const natalSchema = z
   .record(
     z.string().max(40),
@@ -262,6 +265,29 @@ export function createApiMiddleware(root: string, options: ApiOptions = {}) {
       }
       if (route === "/api/config") {
         json(response,405,{error:"La conexión se configura por navegador. No se escriben claves en el servidor."});
+        return true;
+      }
+      if(route === "/api/voice" && request.method === "POST") {
+        const settings=config(request);
+        if(!validKey(settings.key)){json(response,401,{error:"Conectá Anthropic para escuchar las lecturas."});return true;}
+        const body=z.object({text:z.string().trim().min(1).max(240),voice:z.enum(["ef_dora","em_alex"])}).parse(await readBody(request));
+        const fingerprint=createHash("sha256").update(settings.key).digest("hex");
+        if(remote && (verifiedVoiceKeys.get(fingerprint)||0)<Date.now()) {
+          const check=await fetchProvider("https://api.anthropic.com/v1/models/"+encodeURIComponent(settings.model),{headers:{"x-api-key":settings.key,"anthropic-version":"2023-06-01"},signal:AbortSignal.timeout(12000)});
+          if(!check.ok){json(response,401,{error:"Reconectá una clave válida de Anthropic para escuchar."});return true;}
+          if(verifiedVoiceKeys.size>=100)verifiedVoiceKeys.delete(verifiedVoiceKeys.keys().next().value!);
+          verifiedVoiceKeys.set(fingerprint,Date.now()+300000);
+        }
+        if(voiceActive>=2){json(response,429,{error:"La voz está ocupada. Probá en un momento."});return true;}
+        voiceActive++;
+        try {
+          const {synthesize}=await import("./voice");
+          const audio=await synthesize(body.text,body.voice);
+          if(!response.destroyed){response.writeHead(200,{"Content-Type":"audio/wav","Cache-Control":"no-store","Content-Length":audio.length});response.end(audio);}
+        } catch(error) {
+          console.error("Voice synthesis failed",error instanceof Error?error.name:"UnknownError");
+          if(!response.headersSent&&!response.destroyed)json(response,503,{error:"No se pudo preparar la voz natural. Volvé a intentar en un momento."});
+        } finally {voiceActive--;}
         return true;
       }
       if (route === "/api/session" && request.method === "POST") {

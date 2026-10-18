@@ -3,11 +3,9 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { createApiMiddleware } from "./server/api";
 export default defineConfig({
-  worker: { format: "es" },
   server: {
     port: 4173,
     host: "127.0.0.1",
-    headers: { "Cross-Origin-Opener-Policy": "same-origin", "Cross-Origin-Embedder-Policy": "credentialless" },
     fs: {
       deny: [".env", ".env.*", "**/.git/**", "**/.astropocket/**", "**/*.pem"],
     },

@@ -3,7 +3,7 @@ import {speechChunks,spokenText} from "../services/speech";
 import {naturalSpeech,preferredVoice} from "../services/naturalVoice";
 type Playback={id:string;state:"starting"|"playing"|"paused"|"error";progress:number;label?:string;error?:string};
 export default function useVoiceReader(){
-  const supported=typeof window!=="undefined"&&"Worker"in window&&"WebAssembly"in window;
+  const supported=typeof window!=="undefined"&&"Audio"in window;
   const [playback,setPlayback]=useState<Playback|null>(null);
   const request=useRef<AbortController|null>(null);
   const audio=useRef<HTMLAudioElement|null>(null);

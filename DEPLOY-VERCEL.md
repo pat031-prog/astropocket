@@ -4,9 +4,9 @@ Proyecto: `astropocket`, equipo `pat031-progs-projects`. Código AGPL-3.0 o post
 
 ## Construcción
 
-Vite / Node.js 22 o posterior. Ejecutar `npm ci` y `npm run build`; salida `dist`. `prebuild` copia el runtime WASM de voz desde la dependencia instalada. No hay que guardar binarios generados en Git.
+Vite / Node.js 22 o posterior. Ejecutar `npm ci` y `npm run build`; salida `dist`. El install omite descargas opcionales CUDA; la función incluye el runtime CPU Linux x64. Los pesos públicos de Kokoro se descargan en la primera síntesis y se reutilizan en memoria cuando la instancia sigue activa.
 
-El handler Node `api/index.ts` atiende `/api/*`, máximo 300 segundos, con datos locales de Swiss Ephemeris y GeoNames incluidos. Los encabezados COOP/COEP permiten usar hasta cuatro hilos para voz en navegadores compatibles.
+El handler Node `api/index.ts` atiende `/api/*`, máximo 300 segundos, con datos locales de Swiss Ephemeris y GeoNames incluidos. No se descarga un modelo de voz en el navegador.
 
 ## Credenciales
 
@@ -22,8 +22,9 @@ Recordar la clave usa AES-GCM y una clave no exportable en IndexedDB. Se puede d
 2. Rechazar una clave inválida; conectar una válida y recargar con Recordar activado.
 3. Pedir una búsqueda anual: debe entregar la lectura después de consultar el motor, en el mismo turno.
 4. Calcular un nacimiento de prueba y comprobar doce casas cuando la hora es conocida.
-5. Escuchar, pausar, reanudar y detener. La primera escucha descarga Kokoro; el audio se genera en el dispositivo.
+5. Escuchar, pausar, reanudar y detener. La primera escucha prepara Kokoro; el audio se genera en el servidor y no se guarda.
 6. Probar los tres temas, cinco personajes, modo sólo Nova y pantalla pequeña.
 7. Confirmar `/api/status` en modo demo, sin clave compartida, y acceso al código AGPL.
 
 Evidencia en `VERIFICACION.md`. Las pruebas automáticas no hacen llamadas pagas.
+

@@ -16,8 +16,6 @@ const types: Record<string, string> = {
   ".jpg": "image/jpeg",
 };
 createServer(async (request, response) => {
-  response.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-  response.setHeader("Cross-Origin-Embedder-Policy", "credentialless");
   if (await api(request, response)) return;
   try {
     const pathname = decodeURIComponent(
